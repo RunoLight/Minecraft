@@ -1,6 +1,6 @@
-package com.RPGames.PetMod;
+package com.rpgames.petmod;
 
-import com.RPGames.PetMod.Utilities.RegistryHandler;
+import com.rpgames.petmod.utilities.RegistryHandler;
 import net.minecraft.block.Block;
 import net.minecraft.block.Blocks;
 import net.minecraftforge.common.MinecraftForge;
