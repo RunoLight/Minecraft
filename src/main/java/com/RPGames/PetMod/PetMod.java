@@ -1,10 +1,19 @@
 package com.rpgames.petmod;
 
+import com.rpgames.petmod.items.GuideBookItem;
 import com.rpgames.petmod.utilities.RegistryHandler;
 import net.minecraft.block.Block;
 import net.minecraft.block.Blocks;
+import net.minecraft.command.FunctionObject;
+import net.minecraft.entity.player.PlayerInventory;
+import net.minecraft.inventory.container.PlayerContainer;
+import net.minecraft.item.Item;
+import net.minecraft.item.ItemGroup;
+import net.minecraft.item.ItemStack;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.event.RegistryEvent;
+import net.minecraftforge.event.entity.player.PlayerEvent;
+import net.minecraftforge.event.entity.player.PlayerSetSpawnEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.InterModComms;
 import net.minecraftforge.fml.common.Mod;
@@ -14,8 +23,11 @@ import net.minecraftforge.fml.event.lifecycle.InterModEnqueueEvent;
 import net.minecraftforge.fml.event.lifecycle.InterModProcessEvent;
 import net.minecraftforge.fml.event.server.FMLServerStartingEvent;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
+import net.minecraftforge.fml.network.FMLPlayMessages;
+import net.minecraftforge.items.wrapper.PlayerInvWrapper;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
+import org.lwjgl.system.CallbackI;
 
 import java.util.stream.Collectors;
 
@@ -43,26 +55,20 @@ public class PetMod
         MinecraftForge.EVENT_BUS.register(this);
     }
 
-    private void setup(final FMLCommonSetupEvent event)
-    {
+    private void setup(final FMLCommonSetupEvent event) {
         // some preinit code
         LOGGER.info("HELLO FROM PREINIT");
         LOGGER.info("DIRT BLOCK >> {}", Blocks.DIRT.getRegistryName());
     }
-
     private void doClientStuff(final FMLClientSetupEvent event) {
         // do something that can only be done on the client
         LOGGER.info("Got game settings {}", event.getMinecraftSupplier().get().gameSettings);
     }
-
-    private void enqueueIMC(final InterModEnqueueEvent event)
-    {
+    private void enqueueIMC(final InterModEnqueueEvent event) {
         // some example code to dispatch IMC to another mod
         InterModComms.sendTo("examplemod", "helloworld", () -> { LOGGER.info("Hello world from the MDK"); return "Hello world";});
     }
-
-    private void processIMC(final InterModProcessEvent event)
-    {
+    private void processIMC(final InterModProcessEvent event) {
         // some example code to receive and process InterModComms from other mods
         LOGGER.info("Got IMC {}", event.getIMCStream().
                 map(m->m.getMessageSupplier().get()).
@@ -85,4 +91,14 @@ public class PetMod
             LOGGER.info("HELLO from Register Block");
         }
     }
+
+    public static final ItemGroup TAB = new ItemGroup("rpg_pets") {
+
+        @Override
+        public ItemStack createIcon() {
+            return new ItemStack(RegistryHandler.GUIDE_BOOK.get());//ItemStack(Items.Apple/Blocks.Cactus e.t.c.)
+        }
+    };
+
+
 }

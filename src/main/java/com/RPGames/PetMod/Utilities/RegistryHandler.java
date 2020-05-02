@@ -4,7 +4,7 @@ package com.rpgames.petmod.utilities;
 
 
 import com.rpgames.petmod.PetMod;
-import com.rpgames.petmod.items.GuideBook;
+import com.rpgames.petmod.items.GuideBookItem;
 import net.minecraft.item.Item;
 import net.minecraftforge.fml.RegistryObject;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
@@ -19,5 +19,5 @@ public class RegistryHandler {
         ITEM_DEFERRED_REGISTER.register(FMLJavaModLoadingContext.get().getModEventBus());
     }
 
-    public static final RegistryObject<Item> GUIDE_BOOK = ITEM_DEFERRED_REGISTER.register("guide_book", GuideBook::new);
+    public static final RegistryObject<Item> GUIDE_BOOK = ITEM_DEFERRED_REGISTER.register("guide_book", GuideBookItem::new);
 }
