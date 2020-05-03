@@ -24,8 +24,19 @@ public class GuideBookItem extends Item {
         super(new Item.Properties().
                 group(PetMod.TAB).
                 rarity(Rarity.RARE));
-        Rarity rarity = Rarity.EPIC;
     }
+
+    public ActionResultType onItemUse(ItemUseContext context) {
+        World world = context.getWorld();
+        BlockPos blockpos = context.getPos();
+        BlockState blockstate = world.getBlockState(blockpos);
+        if (blockstate.getBlock() == Blocks.LECTERN) {
+            return LecternBlock.tryPlaceBook(world, blockpos, blockstate, context.getItem()) ? ActionResultType.SUCCESS : ActionResultType.PASS;
+        } else {
+            return ActionResultType.PASS;
+        }
+    }
+
     public ActionResult<ItemStack> onItemRightClick(World worldIn, PlayerEntity playerIn, Hand handIn) {
         ItemStack itemstack = playerIn.getHeldItem(handIn);
         playerIn.openBook(itemstack, handIn);
