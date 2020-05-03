@@ -20,4 +20,5 @@ public class RegistryHandler {
     }
 
     public static final RegistryObject<Item> GUIDE_BOOK = ITEM_DEFERRED_REGISTER.register("guide_book", GuideBookItem::new);
+    public static final RegistryObject<Item> GUIDE_BOOK2 = ITEM_DEFERRED_REGISTER.register("guide_book2", GuideBookItem::new);
 }
