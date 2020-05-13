@@ -1,4 +1,8 @@
 {
   "item.rpgpetmod.guide_book": "Pets Guide Book",
-  "itemGroup.rpg_pets": "RGP Pets"
+  "itemGroup.rpg_pets": "RGP Pets",
+
+  "item.rpgpetmod.simple_item": "Simple item",
+  "commands.pp": "Net, ne rabotaet",
+  "commands.pp.color": "Net, ne rabotaet"
 }
