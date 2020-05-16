@@ -26,7 +26,6 @@ public class PetMod
     public static PetMod instance;
 
     public static final ItemGroup petModItemGroup = new ItemGroup("rpg_pets") {
-
         @Override
         public ItemStack createIcon() {
             return new ItemStack(RegistryHandler.GUIDE_BOOK.get());
