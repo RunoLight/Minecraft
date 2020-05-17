@@ -50,4 +50,5 @@ public class RegistryHandler {
                             .build(new ResourceLocation(PetMod.MOD_ID, "raccoon_entity").toString()));
 
     
+    //Test merge
 }
