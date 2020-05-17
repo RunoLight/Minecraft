@@ -1,5 +1,6 @@
 package com.rpgames.petmod.init;
 
+import com.google.common.collect.ImmutableSet;
 import com.rpgames.petmod.PetMod;
 import com.rpgames.petmod.block.BlockItemBase;
 import com.rpgames.petmod.block.DevBlock;
@@ -12,11 +13,18 @@ import net.minecraft.entity.EntityType;
 import net.minecraft.entity.merchant.villager.VillagerProfession;
 import net.minecraft.item.Item;
 import net.minecraft.util.ResourceLocation;
+import net.minecraft.util.SoundEvents;
 import net.minecraft.village.PointOfInterestType;
 import net.minecraftforge.fml.RegistryObject;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
 import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
+
+import static net.minecraft.village.PointOfInterestType.getAllStates;
+
+//import com.rpgames.petmod.profession.PetPointOfInterestType;
+//import static com.rpgames.petmod.profession.PetPointOfInterestType.PET_DEALER_ID;
+//import static com.rpgames.petmod.profession.PetProfession.PET_PROFESSION_ID;
 
 public class RegistryHandler {
 
@@ -45,10 +53,17 @@ public class RegistryHandler {
     // Entity
     public static final RegistryObject<EntityType<RaccoonEntity>> RACCOON_ENTITY = ENTITY_DEFERRED_REGISTER
             .register("raccoon_entity",
-                    () -> EntityType.Builder.<RaccoonEntity>create(RaccoonEntity::new, EntityClassification.CREATURE)
+                    () -> EntityType.Builder.create(RaccoonEntity::new, EntityClassification.CREATURE)
                             .size(0.9f, 1.3f)
                             .build(new ResourceLocation(PetMod.MOD_ID, "raccoon_entity").toString()));
 
-    
-    //Test morg
+    // POI
+    public static final RegistryObject<PointOfInterestType> POI = POI_TYPE_DEFERRED_REGISTER.register(
+            "pet_poi", () -> new PointOfInterestType("pet_poi", getAllStates(RegistryHandler.DEV_BLOCK.get()), 1, null, 1)
+    );
+
+    // Profession
+    public static final RegistryObject<VillagerProfession> PET_PROFESSION = VILLAGER_PROFESSION_DEFERRED_REGISTER.register(
+            "pet_villager", () -> new VillagerProfession("pet_villager", POI.get(), ImmutableSet.of(), ImmutableSet.of(), SoundEvents.ENTITY_VILLAGER_WORK_FARMER)
+    );
 }
