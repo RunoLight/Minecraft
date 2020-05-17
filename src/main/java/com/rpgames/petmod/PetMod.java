@@ -21,12 +21,11 @@ import com.rpgames.petmod.init.RegistryHandler;
 public class PetMod
 {
     // Directly reference a log4j logger.
-    private static final Logger LOGGER = LogManager.getLogger();
+    public static final Logger LOGGER = LogManager.getLogger();
     public static final String MOD_ID = "rpgpetmod";
     public static PetMod instance;
 
     public static final ItemGroup petModItemGroup = new ItemGroup("rpg_pets") {
-
         @Override
         public ItemStack createIcon() {
             return new ItemStack(RegistryHandler.GUIDE_BOOK.get());
@@ -64,11 +63,4 @@ public class PetMod
     public void onServerStarting(FMLServerStartingEvent event) {
     }
 
-    @Mod.EventBusSubscriber(bus=Mod.EventBusSubscriber.Bus.MOD)
-    public static class RegistryEvents {
-        @SubscribeEvent
-        public static void onBlocksRegistry(final RegistryEvent.Register<Block> blockRegistryEvent) {
-            // register a new block here
-        }
-    }
 }

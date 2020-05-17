@@ -10,4 +10,6 @@ public class GuideBookItem extends WrittenBookItem {
                 .group(PetMod.petModItemGroup)
                 .rarity(Rarity.RARE));
     }
+
+
 }
