@@ -38,6 +38,8 @@ public class RegistryHandler {
         ITEM_DEFERRED_REGISTER.register(FMLJavaModLoadingContext.get().getModEventBus());
         BLOCK_DEFERRED_REGISTER.register(FMLJavaModLoadingContext.get().getModEventBus());
         ENTITY_DEFERRED_REGISTER.register(FMLJavaModLoadingContext.get().getModEventBus());
+        POI_TYPE_DEFERRED_REGISTER.register(FMLJavaModLoadingContext.get().getModEventBus());
+        VILLAGER_PROFESSION_DEFERRED_REGISTER.register(FMLJavaModLoadingContext.get().getModEventBus());
     }
 
     // Item
