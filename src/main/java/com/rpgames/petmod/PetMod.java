@@ -1,6 +1,5 @@
 package com.rpgames.petmod;
 
-import com.rpgames.petmod.init.RegistryHandler;
 import net.minecraft.block.Block;
 import net.minecraft.item.ItemGroup;
 import net.minecraft.item.ItemStack;
@@ -16,6 +15,7 @@ import net.minecraftforge.fml.event.server.FMLServerStartingEvent;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
+import com.rpgames.petmod.init.RegistryHandler;
 
 @Mod("rpgpetmod")
 public class PetMod
