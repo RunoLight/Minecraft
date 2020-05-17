@@ -1,11 +1,12 @@
 {
-  "item.rpgpetmod.guide_book": "Pets Guide Book",
-  "block.rpgpetmod.dev_block": "Developers Block",
-  "item.rpgpetmod.simple_item": "Simple item",
   "itemGroup.rpg_pets": "RGP Pets",
+
+  "item.rpgpetmod.guide_book": "Pets Guide Book",
+  "item.rpgpetmod.simple_item": "Simple item",
+  "item.rpgpetmod.raccoon_entity_egg": "Raccoon Egg",
+
+  "block.rpgpetmod.dev_block": "Developers Block",
+
   "commands.pp": "Net, ne rabotaet",
   "commands.pp.color": "Net, ne rabotaet",
-
-
-  "item.rpgpetmod.raccoon_entity_egg": "Raccoon Egg"
 }
