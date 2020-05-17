@@ -56,7 +56,7 @@ public class RegistryHandler {
                     () -> EntityType.Builder.create(RaccoonEntity::new, EntityClassification.CREATURE)
                             .size(0.9f, 1.3f)
                             .build(new ResourceLocation(PetMod.MOD_ID, "raccoon_entity").toString()));
-    
+
     // POI
     public static final RegistryObject<PointOfInterestType> POI = POI_TYPE_DEFERRED_REGISTER.register(
             "pet_poi", () -> new PointOfInterestType("pet_poi", getAllStates(RegistryHandler.DEV_BLOCK.get()), 1, null, 1)
