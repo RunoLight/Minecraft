@@ -22,10 +22,6 @@ import net.minecraftforge.registries.ForgeRegistries;
 
 import static net.minecraft.village.PointOfInterestType.getAllStates;
 
-//import com.rpgames.petmod.profession.PetPointOfInterestType;
-//import static com.rpgames.petmod.profession.PetPointOfInterestType.PET_DEALER_ID;
-//import static com.rpgames.petmod.profession.PetProfession.PET_PROFESSION_ID;
-
 public class RegistryHandler {
 
     public static final DeferredRegister<Item> ITEM_DEFERRED_REGISTER = new DeferredRegister<>(ForgeRegistries.ITEMS, PetMod.MOD_ID);
@@ -34,13 +30,19 @@ public class RegistryHandler {
     public static final DeferredRegister<PointOfInterestType> POI_TYPE_DEFERRED_REGISTER = new DeferredRegister<>(ForgeRegistries.POI_TYPES, PetMod.MOD_ID);
     public static final DeferredRegister<VillagerProfession> VILLAGER_PROFESSION_DEFERRED_REGISTER = new DeferredRegister<>(ForgeRegistries.PROFESSIONS, PetMod.MOD_ID);
 
-    public static void init(){
+    public static void registerAll() {
         ITEM_DEFERRED_REGISTER.register(FMLJavaModLoadingContext.get().getModEventBus());
         BLOCK_DEFERRED_REGISTER.register(FMLJavaModLoadingContext.get().getModEventBus());
         ENTITY_DEFERRED_REGISTER.register(FMLJavaModLoadingContext.get().getModEventBus());
         POI_TYPE_DEFERRED_REGISTER.register(FMLJavaModLoadingContext.get().getModEventBus());
         VILLAGER_PROFESSION_DEFERRED_REGISTER.register(FMLJavaModLoadingContext.get().getModEventBus());
     }
+
+    /*
+     * TODO: Split up registers to different classes
+     *  which will contain ID of item as string instead of silent argument in .register() func
+     *  for having ID base
+     */
 
     // Item
     public static final RegistryObject<Item> GUIDE_BOOK = ITEM_DEFERRED_REGISTER.register("guide_book", GuideBookItem::new);
