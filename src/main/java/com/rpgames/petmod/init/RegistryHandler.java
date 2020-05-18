@@ -79,6 +79,4 @@ public class RegistryHandler {
     public static final RegistryObject<VillagerProfession> PET_PROFESSION = VILLAGER_PROFESSION_DEFERRED_REGISTER.register(
             "pet_villager", () -> new VillagerProfession("pet_villager", POI.get(), ImmutableSet.of(), ImmutableSet.of(), SoundEvents.ENTITY_VILLAGER_WORK_FARMER)
     );
-
-    //Tesdqwst dsadqw tssssest testkjassdsadqwdlkhj
 }
