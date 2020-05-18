@@ -46,7 +46,7 @@ public class SpawnerScreenGui extends Screen {
 
     @Override
     public void render(int mouseX, int mouseY, float partialTicks) {
-        GlStateManager.color4f(1.0F, 1.0F, 1.0F, 1.0F);
+        //GlStateManager.color4f(1.0F, 1.0F, 1.0F, 1.0F);
         this.minecraft.getTextureManager().bindTexture(GUI);
         int relX = (this.width + WIDTH) / 2;
         int relY = (this.height - HEIGHT) / 2;
