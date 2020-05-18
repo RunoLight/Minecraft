@@ -4,6 +4,7 @@ import com.google.common.collect.ImmutableSet;
 import com.rpgames.petmod.PetMod;
 import com.rpgames.petmod.block.BlockItemBase;
 import com.rpgames.petmod.block.DevBlock;
+import com.rpgames.petmod.block.PeanutFoodBlock;
 import com.rpgames.petmod.entity.RaccoonEntity;
 import com.rpgames.petmod.item.GuideBookItem;
 import com.rpgames.petmod.item.SimpleItem;
@@ -19,6 +20,7 @@ import net.minecraftforge.fml.RegistryObject;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
 import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
+import com.rpgames.petmod.item.PeanutFood;
 
 import static net.minecraft.village.PointOfInterestType.getAllStates;
 
@@ -42,15 +44,21 @@ public class RegistryHandler {
         VILLAGER_PROFESSION_DEFERRED_REGISTER.register(FMLJavaModLoadingContext.get().getModEventBus());
     }
 
+
     // Item
     public static final RegistryObject<Item> GUIDE_BOOK = ITEM_DEFERRED_REGISTER.register("guide_book", GuideBookItem::new);
     public static final RegistryObject<Item> SIMPLE_ITEM = ITEM_DEFERRED_REGISTER.register("simple_item", SimpleItem::new);
 
+    //Food
+    public static final RegistryObject<Item> PEANUT_FOOD = ITEM_DEFERRED_REGISTER.register("peanut_food", PeanutFood::new);
+
     // Block
     public static final RegistryObject<Block> DEV_BLOCK = BLOCK_DEFERRED_REGISTER.register("dev_block", DevBlock::new);
+    public static final RegistryObject<Block> PEANUT_FOOD_BLOCK = BLOCK_DEFERRED_REGISTER.register("peanut_food_block", PeanutFoodBlock::new);
 
     // Block-Items
     public static final RegistryObject<Item> DEV_BLOCK_ITEM = ITEM_DEFERRED_REGISTER.register("dev_block", () -> new BlockItemBase(DEV_BLOCK.get()));
+    public static final RegistryObject<Item> PEANUT_FOOD_BLOCK_ITEM = ITEM_DEFERRED_REGISTER.register("peanut_food_block", () -> new BlockItemBase(PEANUT_FOOD_BLOCK.get()));
 
     // Entity
     public static final RegistryObject<EntityType<RaccoonEntity>> RACCOON_ENTITY = ENTITY_DEFERRED_REGISTER
