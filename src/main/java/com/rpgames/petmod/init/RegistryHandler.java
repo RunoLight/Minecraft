@@ -50,7 +50,10 @@ public class RegistryHandler {
     // Item
     public static final RegistryObject<Item> GUIDE_BOOK = ITEM_DEFERRED_REGISTER.register("guide_book", GuideBookItem::new);
     public static final RegistryObject<Item> SIMPLE_ITEM = ITEM_DEFERRED_REGISTER.register("simple_item", SimpleItem::new);
-//    public static final RegistryObject<Item> RACCOON_ENTITY_EGG = ITEM_DEFERRED_REGISTER.register("raccoon_entity_egg", ()-> new SpawnEggItem(RACCOON_ENTITY.get(),0x111111, 0x222222, ));
+    public static final RegistryObject<Item> RACCOON_ENTITY_EGG = ITEM_DEFERRED_REGISTER.register("raccoon_entity_egg", ()-> new SpawnEggItem(RACCOON_ENTITY.get(),
+            0x111111,
+            0x222222,
+            ));
 
     //Food
     public static final RegistryObject<Item> PEANUT_FOOD = ITEM_DEFERRED_REGISTER.register("peanut_food", PeanutFood::new);
@@ -80,5 +83,5 @@ public class RegistryHandler {
             "pet_villager", () -> new VillagerProfession("pet_villager", POI.get(), ImmutableSet.of(), ImmutableSet.of(), SoundEvents.ENTITY_VILLAGER_WORK_FARMER)
     );
 
-    //Test test testkjlkhj
+    //Test test testkjlkhjjlhjkgjh
 }
