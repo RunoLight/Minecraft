@@ -6,12 +6,14 @@ import com.rpgames.petmod.block.BlockItemBase;
 import com.rpgames.petmod.block.DevBlock;
 import com.rpgames.petmod.entity.RaccoonEntity;
 import com.rpgames.petmod.item.GuideBookItem;
+import com.rpgames.petmod.item.RaccoonEntityEgg;
 import com.rpgames.petmod.item.SimpleItem;
 import net.minecraft.block.Block;
 import net.minecraft.entity.EntityClassification;
 import net.minecraft.entity.EntityType;
 import net.minecraft.entity.merchant.villager.VillagerProfession;
 import net.minecraft.item.Item;
+import net.minecraft.item.SpawnEggItem;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.SoundEvents;
 import net.minecraft.village.PointOfInterestType;
@@ -45,6 +47,7 @@ public class RegistryHandler {
     // Item
     public static final RegistryObject<Item> GUIDE_BOOK = ITEM_DEFERRED_REGISTER.register("guide_book", GuideBookItem::new);
     public static final RegistryObject<Item> SIMPLE_ITEM = ITEM_DEFERRED_REGISTER.register("simple_item", SimpleItem::new);
+//    public static final RegistryObject<Item> RACCOON_ENTITY_EGG = ITEM_DEFERRED_REGISTER.register("raccoon_entity_egg", ()-> new SpawnEggItem(RACCOON_ENTITY.get(),0x111111, 0x222222, ));
 
     // Block
     public static final RegistryObject<Block> DEV_BLOCK = BLOCK_DEFERRED_REGISTER.register("dev_block", DevBlock::new);
