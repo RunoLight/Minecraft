@@ -10,7 +10,7 @@ import net.minecraft.util.ResourceLocation;
 public class RaccoonEntityRender extends MobRenderer<RaccoonEntity, RaccoonEntityModel<RaccoonEntity>> {
 
     protected static final ResourceLocation TEXTURE = new ResourceLocation(PetMod.MOD_ID,
-            "textures/entities/example_entity.png");
+            "textures/entity/example_entity.png");
 
     public RaccoonEntityRender(EntityRendererManager renderManagerIn) {
         super(renderManagerIn, new RaccoonEntityModel<RaccoonEntity>(), 0.5f);
