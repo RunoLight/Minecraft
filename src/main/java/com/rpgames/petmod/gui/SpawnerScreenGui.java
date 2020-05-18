@@ -10,15 +10,15 @@ import net.minecraft.client.gui.widget.button.Button;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.text.StringTextComponent;
 
-public class SpawnerScreen extends Screen {
+public class SpawnerScreenGui extends Screen {
 
     // size of spawner_gui.png
     private static final int WIDTH = 179;
     private static final int HEIGHT = 151;
 
-    private ResourceLocation GUI = new ResourceLocation(PetMod.MOD_ID, "textures/gui/spawner_gui.png");
+    private final ResourceLocation GUI = new ResourceLocation(PetMod.MOD_ID, "textures/gui/spawner_gui.png");
 
-    public SpawnerScreen() {
+    public SpawnerScreenGui() {
         super(new StringTextComponent("SpawnSomething"));
     }
 
@@ -55,6 +55,6 @@ public class SpawnerScreen extends Screen {
     }
 
     public static void open() {
-        Minecraft.getInstance().displayGuiScreen(new SpawnerScreen());
+        Minecraft.getInstance().displayGuiScreen(new SpawnerScreenGui());
     }
 }

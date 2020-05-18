@@ -1,21 +1,15 @@
 package com.rpgames.petmod;
 
-import com.rpgames.petmod.client.renders.RaccoonEntityRender;
 import com.rpgames.petmod.init.ForgeEventHandlers;
+import com.rpgames.petmod.init.RegistryHandler;
 import com.rpgames.petmod.network.Networking;
 import net.minecraft.item.ItemGroup;
 import net.minecraft.item.ItemStack;
 import net.minecraftforge.common.MinecraftForge;
-import net.minecraftforge.fml.client.registry.RenderingRegistry;
 import net.minecraftforge.fml.common.Mod;
-import net.minecraftforge.fml.event.lifecycle.FMLClientSetupEvent;
-import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
-import net.minecraftforge.fml.event.lifecycle.InterModEnqueueEvent;
-import net.minecraftforge.fml.event.lifecycle.InterModProcessEvent;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
-import com.rpgames.petmod.init.RegistryHandler;
 
 @Mod("rpgpetmod")
 public class PetMod
@@ -47,10 +41,13 @@ public class PetMod
         MinecraftForge.EVENT_BUS.register(new ForgeEventHandlers());
 
         FMLJavaModLoadingContext.get().getModEventBus().register(ForgeEventHandlers.class);
-
+        //FMLJavaModLoadingContext.get().getModEventBus().addListener(this::serverStarting);
 
         Networking.registerMessages();
     }
+
+
+
 
 
     //private void doClientStuff(final FMLClientSetupEvent event) {

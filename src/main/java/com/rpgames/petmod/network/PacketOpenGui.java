@@ -1,6 +1,6 @@
 package com.rpgames.petmod.network;
 
-import com.rpgames.petmod.gui.SpawnerScreen;
+import com.rpgames.petmod.gui.SpawnerScreenGui;
 import net.minecraft.network.PacketBuffer;
 import net.minecraftforge.fml.network.NetworkEvent;
 
@@ -21,7 +21,7 @@ public class PacketOpenGui {
     }
 
     public void handle(Supplier<NetworkEvent.Context> ctx) {
-        ctx.get().enqueueWork(SpawnerScreen::open);
+        ctx.get().enqueueWork(SpawnerScreenGui::open);
         ctx.get().setPacketHandled(true);
     }
 }

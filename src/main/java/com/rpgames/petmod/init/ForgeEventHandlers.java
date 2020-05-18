@@ -5,21 +5,19 @@ import com.rpgames.petmod.client.renders.RaccoonEntityRender;
 import com.rpgames.petmod.command.RegisterCommands;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.client.registry.RenderingRegistry;
-import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.event.lifecycle.FMLClientSetupEvent;
 import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
-import net.minecraftforge.fml.event.lifecycle.InterModEnqueueEvent;
-import net.minecraftforge.fml.event.lifecycle.InterModProcessEvent;
 import net.minecraftforge.fml.event.server.FMLServerStartingEvent;
 
 public class ForgeEventHandlers {
+
     //
     // Class to subscribe all the events here
     // Methods should be public static void + SubscribeEvent Annotation
     //
 
     @SubscribeEvent
-    public static void serverStarting(FMLServerStartingEvent event) {
+    public void serverStarting(FMLServerStartingEvent event) {
         RegisterCommands.register(event.getCommandDispatcher());
     }
 
