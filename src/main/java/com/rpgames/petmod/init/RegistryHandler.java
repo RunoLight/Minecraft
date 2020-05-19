@@ -14,10 +14,14 @@ import net.minecraft.entity.EntityClassification;
 import net.minecraft.entity.EntityType;
 import net.minecraft.entity.merchant.villager.VillagerProfession;
 import net.minecraft.item.Item;
+import net.minecraft.item.Rarity;
 import net.minecraft.item.SpawnEggItem;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.SoundEvents;
 import net.minecraft.village.PointOfInterestType;
+import net.minecraftforge.event.RegistryEvent;
+import net.minecraftforge.eventbus.api.EventPriority;
+import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.RegistryObject;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
 import net.minecraftforge.registries.DeferredRegister;
@@ -26,11 +30,8 @@ import com.rpgames.petmod.item.PeanutFood;
 
 import static net.minecraft.village.PointOfInterestType.getAllStates;
 
-//import com.rpgames.petmod.profession.PetPointOfInterestType;
-//import static com.rpgames.petmod.profession.PetPointOfInterestType.PET_DEALER_ID;
-//import static com.rpgames.petmod.profession.PetProfession.PET_PROFESSION_ID;
-
 public class RegistryHandler {
+
 
     public static final DeferredRegister<Item> ITEM_DEFERRED_REGISTER = new DeferredRegister<>(ForgeRegistries.ITEMS, PetMod.MOD_ID);
     public static final DeferredRegister<Block> BLOCK_DEFERRED_REGISTER = new DeferredRegister<>(ForgeRegistries.BLOCKS, PetMod.MOD_ID);
@@ -38,7 +39,7 @@ public class RegistryHandler {
     public static final DeferredRegister<PointOfInterestType> POI_TYPE_DEFERRED_REGISTER = new DeferredRegister<>(ForgeRegistries.POI_TYPES, PetMod.MOD_ID);
     public static final DeferredRegister<VillagerProfession> VILLAGER_PROFESSION_DEFERRED_REGISTER = new DeferredRegister<>(ForgeRegistries.PROFESSIONS, PetMod.MOD_ID);
 
-    public static void init(){
+    public static void registerAll() {
         ITEM_DEFERRED_REGISTER.register(FMLJavaModLoadingContext.get().getModEventBus());
         BLOCK_DEFERRED_REGISTER.register(FMLJavaModLoadingContext.get().getModEventBus());
         ENTITY_DEFERRED_REGISTER.register(FMLJavaModLoadingContext.get().getModEventBus());
@@ -46,14 +47,16 @@ public class RegistryHandler {
         VILLAGER_PROFESSION_DEFERRED_REGISTER.register(FMLJavaModLoadingContext.get().getModEventBus());
     }
 
+    /*
+     * TODO: Split up registers to different classes
+     *  which will contain ID of item as string instead of silent argument in .register() func
+     *  for having ID base
+     */
+
 
     // Item
     public static final RegistryObject<Item> GUIDE_BOOK = ITEM_DEFERRED_REGISTER.register("guide_book", GuideBookItem::new);
     public static final RegistryObject<Item> SIMPLE_ITEM = ITEM_DEFERRED_REGISTER.register("simple_item", SimpleItem::new);
-    public static final RegistryObject<Item> RACCOON_ENTITY_EGG = ITEM_DEFERRED_REGISTER.register("raccoon_entity_egg", ()-> new SpawnEggItem(RACCOON_ENTITY.get(),
-            0x111111,
-            0x222222,
-            ));
 
     //Food
     public static final RegistryObject<Item> PEANUT_FOOD = ITEM_DEFERRED_REGISTER.register("peanut_food", PeanutFood::new);
@@ -69,9 +72,18 @@ public class RegistryHandler {
     // Entity
     public static final RegistryObject<EntityType<RaccoonEntity>> RACCOON_ENTITY = ENTITY_DEFERRED_REGISTER
             .register("raccoon_entity",
-                    () -> EntityType.Builder.create(RaccoonEntity::new, EntityClassification.CREATURE)
+                    () -> EntityType.Builder.<RaccoonEntity>create(RaccoonEntity::new, EntityClassification.CREATURE)
                             .size(0.9f, 1.3f)
                             .build(new ResourceLocation(PetMod.MOD_ID, "raccoon_entity").toString()));
+
+    public static final RegistryObject<Item> RACCOON_ENTITY_EGG = ITEM_DEFERRED_REGISTER.register("raccoon_entity_egg",
+            ()-> new RaccoonEntityEgg(RACCOON_ENTITY,
+            0x111111,
+            0x222222,
+            new Item.Properties()
+                    .group(PetMod.petModItemGroup)
+                    .rarity(Rarity.EPIC)
+            ));
 
     // POI
     public static final RegistryObject<PointOfInterestType> POI = POI_TYPE_DEFERRED_REGISTER.register(
@@ -82,6 +94,14 @@ public class RegistryHandler {
     public static final RegistryObject<VillagerProfession> PET_PROFESSION = VILLAGER_PROFESSION_DEFERRED_REGISTER.register(
             "pet_villager", () -> new VillagerProfession("pet_villager", POI.get(), ImmutableSet.of(), ImmutableSet.of(), SoundEvents.ENTITY_VILLAGER_WORK_FARMER)
     );
+<<<<<<< HEAD
 
+
+    @SubscribeEvent(priority = EventPriority.LOWEST)
+    public static void onPostRegisterEntities(final RegistryEvent.Register<EntityType<?>> event) {
+        RaccoonEntityEgg.initUnaddedEggs();
+    }
     //Test test testkjlkhjjlhjkgjh
+=======
+>>>>>>> f0f89f377cf3a07a45cc8751d25ca176422437d3
 }
