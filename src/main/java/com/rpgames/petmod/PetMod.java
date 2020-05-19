@@ -28,16 +28,12 @@ public class PetMod
     public PetMod() {
         instance = this;
 
-       // FMLJavaModLoadingContext.get().getModEventBus().addListener(this::setup);
-       // FMLJavaModLoadingContext.get().getModEventBus().addListener(this::enqueueIMC);
-       // FMLJavaModLoadingContext.get().getModEventBus().addListener(this::processIMC);
-        //FMLJavaModLoadingContext.get().getModEventBus().addListener(this::clientSetup);
-
         RegistryHandler.registerAll();
 
         // Mod event bus contains life-cycle events (setup -> pre-init -> init -> post-init)
         // Forge event bus contains run-time events!
         MinecraftForge.EVENT_BUS.register(this);
+
         MinecraftForge.EVENT_BUS.register(new ForgeEventHandlers());
 
         FMLJavaModLoadingContext.get().getModEventBus().register(ForgeEventHandlers.class);

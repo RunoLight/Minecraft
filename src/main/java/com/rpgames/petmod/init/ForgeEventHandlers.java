@@ -3,6 +3,10 @@ package com.rpgames.petmod.init;
 import com.rpgames.petmod.PetMod;
 import com.rpgames.petmod.client.renders.RaccoonEntityRender;
 import com.rpgames.petmod.command.RegisterCommands;
+import com.rpgames.petmod.item.RaccoonEntityEgg;
+import net.minecraft.entity.EntityType;
+import net.minecraftforge.event.RegistryEvent;
+import net.minecraftforge.eventbus.api.EventPriority;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.client.registry.RenderingRegistry;
 import net.minecraftforge.fml.event.lifecycle.FMLClientSetupEvent;
@@ -31,5 +35,10 @@ public class ForgeEventHandlers {
     @SubscribeEvent
     public void setup(final FMLCommonSetupEvent event) {
         //some common setup
+    }
+
+    @SubscribeEvent(priority = EventPriority.LOWEST)
+    public static void onPostRegisterEntities(final RegistryEvent.Register<EntityType<?>> event) {
+        RaccoonEntityEgg.initUnaddedEggs();
     }
 }
