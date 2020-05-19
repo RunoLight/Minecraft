@@ -5,8 +5,10 @@ import com.rpgames.petmod.PetMod;
 import com.rpgames.petmod.network.Networking;
 import com.rpgames.petmod.network.PacketSpawn;
 import net.minecraft.client.Minecraft;
+import net.minecraft.client.gui.FontRenderer;
 import net.minecraft.client.gui.screen.Screen;
 import net.minecraft.client.gui.widget.button.Button;
+import net.minecraft.client.renderer.texture.TextureManager;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.text.StringTextComponent;
 
@@ -28,7 +30,6 @@ public class SpawnerScreenGui extends Screen {
         int relX = (this.width - WIDTH) / 2;
         int relY = (this.height - HEIGHT) / 2;
 
-        addButton(new Button(relX + 10, relY + 10, 160, 20, "Skeleton", button -> spawn("minecraft:skeleton")));
         addButton(new Button(relX + 10, relY + 10, 160, 20, "Raccoon", button -> spawn(PetMod.MOD_ID + ":" + "raccoon_entity")));
         addButton(new Button(relX + 10, relY + 37, 160, 20, "Zombie", button -> spawn("minecraft:zombie")));
         addButton(new Button(relX + 10, relY + 64, 160, 20, "Cow", button -> spawn("minecraft:cow")));
@@ -42,16 +43,20 @@ public class SpawnerScreenGui extends Screen {
 
     private void spawn(String id) {
         if (minecraft != null) {
+            Networking.INSTANCE.sendToServer(new PacketSpawn(id, minecraft.player.dimension, minecraft.player.getPosition()));
+            minecraft.displayGuiScreen(null);
+        }
     }
 
     @Override
     public void render(int mouseX, int mouseY, float partialTicks) {
-        //GlStateManager.color4f(1.0F, 1.0F, 1.0F, 1.0F);
-        this.minecraft.getTextureManager().bindTexture(GUI);
-        int relX = (this.width + WIDTH) / 2;
-        int relY = (this.height - HEIGHT) / 2;
-        this.blit(relX, relY, 0,0,WIDTH, HEIGHT);
-        super.render(mouseX, mouseY, partialTicks);
+        if (this.minecraft != null) {
+            this.minecraft.getTextureManager().bindTexture(GUI);
+            int relX = (this.width + WIDTH) / 2;
+            int relY = (this.height - HEIGHT) / 2;
+            this.blit(relX, relY, 0,0,WIDTH, HEIGHT);
+            super.render(mouseX, mouseY, partialTicks);
+        }
     }
 
     public static void open() {
