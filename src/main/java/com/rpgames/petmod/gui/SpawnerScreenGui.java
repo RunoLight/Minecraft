@@ -54,7 +54,7 @@ public class SpawnerScreenGui extends Screen {
             this.minecraft.getTextureManager().bindTexture(GUI);
             int relX = (this.width + WIDTH) / 2;
             int relY = (this.height - HEIGHT) / 2;
-            this.blit(relX, relY, 0,0,WIDTH, HEIGHT);
+            this.blit(relX - WIDTH, relY, 0,0,WIDTH, HEIGHT);
             super.render(mouseX, mouseY, partialTicks);
         }
     }
