@@ -78,8 +78,8 @@ public class RegistryHandler {
 
     public static final RegistryObject<Item> RACCOON_ENTITY_EGG = ITEM_DEFERRED_REGISTER.register("raccoon_entity_egg",
             ()-> new RaccoonEntityEgg(RACCOON_ENTITY,
-            0x111111,
-            0x222222,
+                    0x8aafff,
+                    0xff8a8a,
             new Item.Properties()
                     .group(PetMod.petModItemGroup)
                     .rarity(Rarity.EPIC)
