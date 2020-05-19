@@ -95,5 +95,4 @@ public class RegistryHandler {
             "pet_villager", () -> new VillagerProfession("pet_villager", POI.get(), ImmutableSet.of(), ImmutableSet.of(), SoundEvents.ENTITY_VILLAGER_WORK_FARMER)
     );
 
-
 }
