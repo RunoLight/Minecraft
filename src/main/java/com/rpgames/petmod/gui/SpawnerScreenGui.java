@@ -29,6 +29,7 @@ public class SpawnerScreenGui extends Screen {
         int relY = (this.height - HEIGHT) / 2;
 
         addButton(new Button(relX + 10, relY + 10, 160, 20, "Skeleton", button -> spawn("minecraft:skeleton")));
+        addButton(new Button(relX + 10, relY + 10, 160, 20, "Raccoon", button -> spawn(PetMod.MOD_ID + ":" + "raccoon_entity")));
         addButton(new Button(relX + 10, relY + 37, 160, 20, "Zombie", button -> spawn("minecraft:zombie")));
         addButton(new Button(relX + 10, relY + 64, 160, 20, "Cow", button -> spawn("minecraft:cow")));
         addButton(new Button(relX + 10, relY + 91, 160, 20, "Sheep", button -> spawn("minecraft:sheep")));
@@ -40,8 +41,7 @@ public class SpawnerScreenGui extends Screen {
     }
 
     private void spawn(String id) {
-        Networking.INSTANCE.sendToServer(new PacketSpawn(id, minecraft.player.dimension, minecraft.player.getPosition()));
-        minecraft.displayGuiScreen(null);
+        if (minecraft != null) {
     }
 
     @Override

@@ -5,6 +5,7 @@ import com.rpgames.petmod.client.renders.RaccoonEntityRender;
 import com.rpgames.petmod.command.RegisterCommands;
 import com.rpgames.petmod.item.RaccoonEntityEgg;
 import net.minecraft.entity.EntityType;
+import net.minecraftforge.client.event.RenderGameOverlayEvent;
 import net.minecraftforge.event.RegistryEvent;
 import net.minecraftforge.eventbus.api.EventPriority;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
@@ -41,4 +42,9 @@ public class ForgeEventHandlers {
     public static void onPostRegisterEntities(final RegistryEvent.Register<EntityType<?>> event) {
         RaccoonEntityEgg.initUnaddedEggs();
     }
+
+    //@SubscribeEvent
+    //public static void renderOverlay(final RenderGameOverlayEvent event) {
+    //    event.getType();
+    //}
 }
