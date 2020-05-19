@@ -31,27 +31,12 @@ public class PetMod
         RegistryHandler.registerAll();
 
         // Mod event bus contains life-cycle events (setup -> pre-init -> init -> post-init)
-        // Forge event bus contains run-time events!
-        MinecraftForge.EVENT_BUS.register(this);
-
-        MinecraftForge.EVENT_BUS.register(new ForgeEventHandlers());
-
         FMLJavaModLoadingContext.get().getModEventBus().register(ForgeEventHandlers.class);
-        //FMLJavaModLoadingContext.get().getModEventBus().addListener(this::serverStarting);
+
+        // Forge event bus contains run-time events!
+        MinecraftForge.EVENT_BUS.register(new ForgeEventHandlers());
+        MinecraftForge.EVENT_BUS.register(this);
 
         Networking.registerMessages();
     }
-
-
-
-
-
-    //private void doClientStuff(final FMLClientSetupEvent event) {
-    //    // do something that can only be done on the client
-    //    RenderingRegistry.registerEntityRenderingHandler(RegistryHandler.RACCOON_ENTITY.get(), RaccoonEntityRender::new);
-    //    LOGGER.info("Got game settings {}", event.getMinecraftSupplier().get().gameSettings);
-    //}
-
-    // Using for other mods compability
-
 }
