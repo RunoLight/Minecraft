@@ -94,14 +94,12 @@ public class RegistryHandler {
     public static final RegistryObject<VillagerProfession> PET_PROFESSION = VILLAGER_PROFESSION_DEFERRED_REGISTER.register(
             "pet_villager", () -> new VillagerProfession("pet_villager", POI.get(), ImmutableSet.of(), ImmutableSet.of(), SoundEvents.ENTITY_VILLAGER_WORK_FARMER)
     );
-<<<<<<< HEAD
+
 
 
     @SubscribeEvent(priority = EventPriority.LOWEST)
     public static void onPostRegisterEntities(final RegistryEvent.Register<EntityType<?>> event) {
         RaccoonEntityEgg.initUnaddedEggs();
     }
-    //Test test testkjlkhjjlhjkgjh
-=======
->>>>>>> f0f89f377cf3a07a45cc8751d25ca176422437d3
+
 }
