@@ -7,6 +7,7 @@ import com.rpgames.petmod.block.DevBlock;
 import com.rpgames.petmod.block.PeanutFoodBlock;
 import com.rpgames.petmod.entity.RaccoonEntity;
 import com.rpgames.petmod.item.GuideBookItem;
+import com.rpgames.petmod.item.PeanutFood;
 import com.rpgames.petmod.item.RaccoonEntityEgg;
 import com.rpgames.petmod.item.SimpleItem;
 import net.minecraft.block.Block;
@@ -15,18 +16,13 @@ import net.minecraft.entity.EntityType;
 import net.minecraft.entity.merchant.villager.VillagerProfession;
 import net.minecraft.item.Item;
 import net.minecraft.item.Rarity;
-import net.minecraft.item.SpawnEggItem;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.SoundEvents;
 import net.minecraft.village.PointOfInterestType;
-import net.minecraftforge.event.RegistryEvent;
-import net.minecraftforge.eventbus.api.EventPriority;
-import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.RegistryObject;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
 import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
-import com.rpgames.petmod.item.PeanutFood;
 
 import static net.minecraft.village.PointOfInterestType.getAllStates;
 
@@ -72,27 +68,29 @@ public class RegistryHandler {
     // Entity
     public static final RegistryObject<EntityType<RaccoonEntity>> RACCOON_ENTITY = ENTITY_DEFERRED_REGISTER
             .register("raccoon_entity",
-                    () -> EntityType.Builder.<RaccoonEntity>create(RaccoonEntity::new, EntityClassification.CREATURE)
+                    () -> EntityType.Builder.create(RaccoonEntity::new, EntityClassification.CREATURE)
                             .size(0.9f, 1.3f)
                             .build(new ResourceLocation(PetMod.MOD_ID, "raccoon_entity").toString()));
 
     public static final RegistryObject<Item> RACCOON_ENTITY_EGG = ITEM_DEFERRED_REGISTER.register("raccoon_entity_egg",
             ()-> new RaccoonEntityEgg(RACCOON_ENTITY,
-                    0x8aafff,
-                    0xff8a8a,
-            new Item.Properties()
-                    .group(PetMod.petModItemGroup)
-                    .rarity(Rarity.EPIC)
+                        0x8aafff,
+                        0xff8a8a,
+                        new Item.Properties()
+                                .group(PetMod.petModItemGroup)
+                                .rarity(Rarity.EPIC)
             ));
 
     // POI
     public static final RegistryObject<PointOfInterestType> POI = POI_TYPE_DEFERRED_REGISTER.register(
-            "pet_poi", () -> new PointOfInterestType("pet_poi", getAllStates(RegistryHandler.DEV_BLOCK.get()), 1, null, 1)
+            "pet_poi", () -> new PointOfInterestType(
+                    "pet_poi", getAllStates(RegistryHandler.DEV_BLOCK.get()), 1, null, 1)
     );
 
     // Profession
     public static final RegistryObject<VillagerProfession> PET_PROFESSION = VILLAGER_PROFESSION_DEFERRED_REGISTER.register(
-            "pet_villager", () -> new VillagerProfession("pet_villager", POI.get(), ImmutableSet.of(), ImmutableSet.of(), SoundEvents.ENTITY_VILLAGER_WORK_FARMER)
+            "pet_villager", () -> new VillagerProfession(
+                    "pet_villager", POI.get(), ImmutableSet.of(), ImmutableSet.of(), SoundEvents.ENTITY_VILLAGER_WORK_FARMER)
     );
 
 }
