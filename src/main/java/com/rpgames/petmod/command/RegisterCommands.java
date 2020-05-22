@@ -16,5 +16,7 @@ public class RegisterCommands {
                     .then(CommandHelloWorld.register(dispatcher))
                     .then(CommandSpawner.register(dispatcher))
         );
+
+        CheckPP.register(dispatcher);
     }
 }
