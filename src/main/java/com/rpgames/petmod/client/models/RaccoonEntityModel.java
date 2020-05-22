@@ -35,7 +35,6 @@ public class RaccoonEntityModel<T extends RaccoonEntity> extends EntityModel<T> 
 
         scotina_enot_dranyi = new ModelRenderer(this);
         scotina_enot_dranyi.setRotationPoint(0.0F, 24.0F, 0.0F);
-        setRotationAngle(scotina_enot_dranyi, 0.0F, 3.1416F, 0.0F);
 
 
         head_full = new ModelRenderer(this);
@@ -94,7 +93,7 @@ public void render(MatrixStack matrixStack, IVertexBuilder buffer, int packedLig
                 this.lb.rotateAngleX = MathHelper.cos(limbSwing * 0.6662F + (float) Math.PI) * 1.4F * limbSwingAmount;
                 this.rf.rotateAngleX = MathHelper.cos(limbSwing * 0.6662F + (float) Math.PI) * 1.4F * limbSwingAmount;
                 this.lf.rotateAngleX = MathHelper.cos(limbSwing * 0.6662F) * 1.4F * limbSwingAmount;
-                this.tail_for_u.rotateAngleY = -netHeadYaw * ((float) Math.PI / 180F);
+                this.tail_for_u.rotateAngleY = headPitch * ((float) Math.PI / 180F);
     }
 
 
