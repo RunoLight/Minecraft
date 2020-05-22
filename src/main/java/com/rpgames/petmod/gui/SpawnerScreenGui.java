@@ -40,10 +40,7 @@ public class SpawnerScreenGui extends Screen {
         addButton(new Button(relX + 10, relY + 37, 160, 20, "Pet keeper", button -> executeCommand(summonVillager)));
         addButton(new Button(relX + 10, relY + 64, 160, 20, "Cow", button -> spawn("minecraft:cow")));
         addButton(new Button(relX + 10, relY + 91, 160, 20, "Sheep", button -> spawn("minecraft:sheep")));
-
     }
-
-
 
     /*
      Commands
