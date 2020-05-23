@@ -60,9 +60,7 @@ public class ForgeEventHandlers {
      * Run-time
      */
     @SubscribeEvent
-    public void villagerTrades(VillagerTradesEvent event) {
-        PetVillagerSetup.addTrades(event);
-    }
+    public void villagerTrades(VillagerTradesEvent event) { PetVillagerSetup.addTrades(event); }
 
     @SubscribeEvent
     public void wandererTrades(WandererTradesEvent event) { PetVillagerSetup.addTrades(event);}
