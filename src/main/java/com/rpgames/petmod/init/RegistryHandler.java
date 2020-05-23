@@ -24,6 +24,9 @@ import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
 import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
 
+import java.lang.reflect.InvocationTargetException;
+import java.lang.reflect.Method;
+
 import static net.minecraft.village.PointOfInterestType.getAllStates;
 
 public class RegistryHandler {
@@ -41,6 +44,7 @@ public class RegistryHandler {
         ENTITY_DEFERRED_REGISTER.register(FMLJavaModLoadingContext.get().getModEventBus());
         POI_TYPE_DEFERRED_REGISTER.register(FMLJavaModLoadingContext.get().getModEventBus());
         VILLAGER_PROFESSION_DEFERRED_REGISTER.register(FMLJavaModLoadingContext.get().getModEventBus());
+        fixPOITypeBlockStates(POI.get());
     }
 
     /*
@@ -93,4 +97,38 @@ public class RegistryHandler {
                     "pet_villager", POI.get(), ImmutableSet.of(), ImmutableSet.of(), SoundEvents.ENTITY_VILLAGER_WORK_FARMER)
     );
 
+
+    /**
+     * Reflection fix
+     * Methods to fix POI reflection, makes villagers available to switch profession to some of modded one
+     */
+    private static Method blockStatesInjector;
+
+    static
+    {
+        try
+        {
+            blockStatesInjector = PointOfInterestType.class.getDeclaredMethod("func_221052_a", PointOfInterestType.class);
+            blockStatesInjector.setAccessible(true);
+        }
+        catch (NoSuchMethodException | SecurityException e)
+        {
+            e.printStackTrace();
+        }
+    }
+
+    public static void fixPOITypeBlockStates(PointOfInterestType poiType)
+    {
+        try
+        {
+            blockStatesInjector.invoke(null, poiType);
+        }
+        catch (IllegalAccessException | IllegalArgumentException | InvocationTargetException e)
+        {
+            e.printStackTrace();
+        }
+    }
+    /**
+     * -- Reflection fix
+     */
 }
