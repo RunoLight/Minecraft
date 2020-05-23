@@ -19,7 +19,7 @@ public class SpawnerScreenGui extends Screen {
     private static final int WIDTH = 180;
     private static final int HEIGHT = 148;
 
-    private final String summonVillager = "/summon villager ~ ~1 ~ {VillagerData:{profession:\"rpgpetmod:pet_villager\",level:2,type:plains}}";
+    private final String summonVillager = "/summon villager ~ ~1 ~ {VillagerData:{profession:\"rpgpetmod:pet_villager\",level:5}}";
     private final String cleanEntities = "/kill @e[distance=..20, type=!minecraft:player]";
     private final String herobrinePrank = "/tellraw @a {\"text\":\"Herobrine joined the game\",\"color\":\"yellow\"}";
 
