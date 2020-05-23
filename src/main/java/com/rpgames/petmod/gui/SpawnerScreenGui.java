@@ -19,7 +19,9 @@ public class SpawnerScreenGui extends Screen {
     private static final int WIDTH = 180;
     private static final int HEIGHT = 148;
 
-    private final String summonVillager = "/summon villager ~ ~1 ~ {VillagerData:{profession:\"rpgpetmod:pet_villager\",level:5}}";
+    private final String summonVillager = "/summon villager ~ ~1 ~ {VillagerData:{profession:\"rpgpetmod:pet_villager\",level:%}}";
+    private int summonVillagerLevel = 2;
+
     private final String cleanEntities = "/kill @e[distance=..20, type=!minecraft:player]";
     private final String herobrinePrank = "/tellraw @a {\"text\":\"Herobrine joined the game\",\"color\":\"yellow\"}";
 
@@ -36,10 +38,12 @@ public class SpawnerScreenGui extends Screen {
         addButton(new Button(relX + 130  + 20, relY + 10, 20, 20, "X", button -> hideGui()));
         addButton(new Button(relX + 10, relY + 10, 135, 20, "Clean", button -> executeCommand(cleanEntities)));
 
-        addButton(new Button(relX + 10,  relY + 118, 160,20, "Raccoon", button -> spawn(PetMod.MOD_ID, "raccoon_entity")));
-        addButton(new Button(relX + 10, relY + 37, 160, 20, "Pet keeper", button -> executeCommand(summonVillager)));
-        addButton(new Button(relX + 10, relY + 64, 160, 20, "Cow", button -> spawn("minecraft:cow")));
-        addButton(new Button(relX + 10, relY + 91, 160, 20, "Sheep", button -> spawn("minecraft:sheep")));
+        addButton(new Button(relX + 10, relY + 37, 135, 20, "Pet keeper", button -> spawnVillager()));
+        addButton(new Button(relX + 130  + 20, relY + 37, 20, 20, Integer.toString(summonVillagerLevel), button -> switchVillagerLevel()));
+
+        addButton(new Button(relX + 10,  relY + 64, 160,20, "Raccoon", button -> spawn(PetMod.MOD_ID, "raccoon_entity")));
+        addButton(new Button(relX + 10, relY + 91, 160, 20, "Cow", button -> spawn("minecraft:cow")));
+        addButton(new Button(relX + 10, relY + 118, 160, 20, "Sheep", button -> spawn("minecraft:sheep")));
     }
 
     /*
@@ -69,6 +73,17 @@ public class SpawnerScreenGui extends Screen {
             assert minecraft.player != null;
             minecraft.player.sendChatMessage(command);
         }
+    }
+
+    private void spawnVillager() {
+        String command = summonVillager.replace('%', Character.forDigit(summonVillagerLevel, 10));
+        executeCommand(command);
+    }
+
+    private void switchVillagerLevel() {
+        summonVillagerLevel = (summonVillagerLevel >= 7) ? 2 : summonVillagerLevel + 1;
+        // It is hardcoded for now!
+        buttons.get(3).setMessage(Integer.toString(summonVillagerLevel));
     }
 
     private void hideGui() {
