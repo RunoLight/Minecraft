@@ -14,7 +14,9 @@ import org.apache.logging.log4j.Logger;
 @Mod("rpgpetmod")
 public class PetMod
 {
-    public static final Logger LOGGER = LogManager.getLogger();
+    // Use DebugLog instead
+    private static final Logger LOGGER = LogManager.getLogger();
+
     public static final String MOD_ID = "rpgpetmod";
     public static PetMod instance;
 
@@ -45,5 +47,10 @@ public class PetMod
         //  SET POI OF VILLAGER TO VILLAGER BLOCK
         //  ADD TRADES VILLAGER
         //  ADD VILLAGER BUILDING
+    }
+
+    public static void DebugLog(String s) {
+        StringBuilder sb = new StringBuilder().append(MOD_ID).append(" -+-+-+-+-+- ").append(s);
+        System.out.println(sb);
     }
 }
