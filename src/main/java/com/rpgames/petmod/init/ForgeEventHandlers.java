@@ -3,10 +3,12 @@ package com.rpgames.petmod.init;
 import com.rpgames.petmod.PetMod;
 import com.rpgames.petmod.client.renders.RaccoonEntityRender;
 import com.rpgames.petmod.command.RegisterCommands;
+import com.rpgames.petmod.event.PetVillagerSetup;
 import com.rpgames.petmod.item.RaccoonEntityEgg;
 import net.minecraft.entity.EntityType;
-import net.minecraftforge.client.event.RenderGameOverlayEvent;
 import net.minecraftforge.event.RegistryEvent;
+import net.minecraftforge.event.village.VillagerTradesEvent;
+import net.minecraftforge.event.village.WandererTradesEvent;
 import net.minecraftforge.eventbus.api.EventPriority;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.client.registry.RenderingRegistry;
@@ -21,9 +23,13 @@ public class ForgeEventHandlers {
     // Methods should be public static void + SubscribeEvent Annotation
     //
 
+
+    /**
+     * Pre-init
+     */
     @SubscribeEvent
-    public void serverStarting(FMLServerStartingEvent event) {
-        RegisterCommands.register(event.getCommandDispatcher());
+    public void setup(final FMLCommonSetupEvent event) {
+        //some common setup
     }
 
     @SubscribeEvent
@@ -33,16 +39,34 @@ public class ForgeEventHandlers {
         RenderingRegistry.registerEntityRenderingHandler(RegistryHandler.RACCOON_ENTITY.get(), RaccoonEntityRender::new);
     }
 
+    /**
+     * Init
+     */
     @SubscribeEvent
-    public void setup(final FMLCommonSetupEvent event) {
-        //some common setup
+    public void serverStarting(FMLServerStartingEvent event) {
+        RegisterCommands.register(event.getCommandDispatcher());
     }
 
+    /**
+     * Post-init
+     */
     @SubscribeEvent(priority = EventPriority.LOWEST)
     public static void onPostRegisterEntities(final RegistryEvent.Register<EntityType<?>> event) {
         RaccoonEntityEgg.initUnaddedEggs();
     }
 
+    /**
+     * Run-time
+     */
+    @SubscribeEvent
+    public void villagerTrades(VillagerTradesEvent event) {
+        PetVillagerSetup.addTrades(event);
+    }
+
+    @SubscribeEvent
+    public void wandererTrades(WandererTradesEvent event) { PetVillagerSetup.addTrades(event);}
+
+    // Сan be used to get run-time render info like width and height of this client
     //@SubscribeEvent
     //public static void renderOverlay(final RenderGameOverlayEvent event) {
     //    event.getType();
