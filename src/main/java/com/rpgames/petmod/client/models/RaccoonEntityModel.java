@@ -9,79 +9,93 @@ import net.minecraft.client.renderer.model.ModelRenderer;
 import net.minecraft.util.math.MathHelper;
 
 public class RaccoonEntityModel<T extends RaccoonEntity> extends EntityModel<T> {
-    private final ModelRenderer Body;
-    private final ModelRenderer Legs;
-    private final ModelRenderer Back;
-    private final ModelRenderer RightBack;
-    private final ModelRenderer LeftBack;
-    private final ModelRenderer Front;
-    private final ModelRenderer RightFront;
-    private final ModelRenderer LeftFront;
-    private final ModelRenderer Head;
+//    private final ModelRenderer Body;
+//    private final ModelRenderer Legs;
+//    private final ModelRenderer Back;
+//    private final ModelRenderer RightBack;
+//    private final ModelRenderer LeftBack;
+//    private final ModelRenderer Front;
+//    private final ModelRenderer RightFront;
+//    private final ModelRenderer LeftFront;
+//    private final ModelRenderer Head;
+    private final ModelRenderer scotina_enot_dranyi;
+    private final ModelRenderer head_full;
+    private final ModelRenderer body_full;
+    private final ModelRenderer tail_for_u;
+    private final ModelRenderer lb;
+    private final ModelRenderer lf;
+    private final ModelRenderer rb;
+    private final ModelRenderer rf;
 
     public RaccoonEntityModel() {
+
+
         textureWidth = 64;
-        textureHeight = 64;
+        textureHeight = 32;
 
-        Body = new ModelRenderer(this);
-        Body.setRotationPoint(0.0F, 16.0F, 0.0F);
-        Body.setTextureOffset(0, 0).addBox(-6.0F, -6.0F, -10.0F, 12, 8, 18, 0.0F, false);
+        scotina_enot_dranyi = new ModelRenderer(this);
+        scotina_enot_dranyi.setRotationPoint(0.0F, 24.0F, 0.0F);
 
-        Legs = new ModelRenderer(this);
-        Legs.setRotationPoint(0.0F, 0.0F, 0.0F);
-        Body.addChild(Legs);
 
-        Back = new ModelRenderer(this);
-        Back.setRotationPoint(0.0F, 0.0F, 0.0F);
-        Legs.addChild(Back);
+        head_full = new ModelRenderer(this);
+        head_full.setRotationPoint(2.0F, -4.0F, -4.0F);
+        scotina_enot_dranyi.addChild(head_full);
+        head_full.setTextureOffset(0, 0).addBox(-4.0F, -6.0F, -4.0F, 6.0F, 6.0F, 6.0F, 0.0F, false);
+        head_full.setTextureOffset(56, 10).addBox(-2.0F, -2.0F, -6.0F, 2.0F, 2.0F, 2.0F, 0.0F, false);
+        head_full.setTextureOffset(56, 6).addBox(-4.0F, -8.0F, -4.0F, 2.0F, 2.0F, 2.0F, 0.0F, false);
+        head_full.setTextureOffset(56, 6).addBox(0.0F, -8.0F, -4.0F, 2.0F, 2.0F, 2.0F, 0.0F, false);
 
-        RightBack = new ModelRenderer(this);
-        RightBack.setRotationPoint(-5.0F, 2.0F, 7.0F);
-        Back.addChild(RightBack);
-        RightBack.setTextureOffset(0, 0).addBox(-1.0F, 0.0F, -1.0F, 2, 6, 2, 0.0F, false);
+        body_full = new ModelRenderer(this);
+        body_full.setRotationPoint(0.0F, -4.0F, 0.0F);
+        scotina_enot_dranyi.addChild(body_full);
+        body_full.setTextureOffset(0, 18).addBox(-2.0F, -4.0F, -2.0F, 6.0F, 4.0F, 10.0F, 0.0F, false);
 
-        LeftBack = new ModelRenderer(this);
-        LeftBack.setRotationPoint(5.0F, 2.0F, 7.0F);
-        Back.addChild(LeftBack);
-        LeftBack.setTextureOffset(6, 6).addBox(-1.0F, 0.0F, -1.0F, 2, 6, 2, 0.0F, false);
+        tail_for_u = new ModelRenderer(this);
+        tail_for_u.setRotationPoint(3.0F, -4.0F, 8.0F);
+        scotina_enot_dranyi.addChild(tail_for_u);
+        tail_for_u.setTextureOffset(24, 0).addBox(-4.0F, -4.0F, 0.0F, 4.0F, 4.0F, 8.0F, 0.0F, false);
 
-        Front = new ModelRenderer(this);
-        Front.setRotationPoint(0.0F, 0.0F, 0.0F);
-        Legs.addChild(Front);
+        lb = new ModelRenderer(this);
+        lb.setRotationPoint(3.0F, -4.0F, 7.0F);
+        scotina_enot_dranyi.addChild(lb);
+        lb.setTextureOffset(56, 0).addBox(-1.0F, 0.0F, -1.0F, 2.0F, 4.0F, 2.0F, 0.0F, false);
 
-        RightFront = new ModelRenderer(this);
-        RightFront.setRotationPoint(-5.0F, 2.0F, -9.0F);
-        Front.addChild(RightFront);
-        RightFront.setTextureOffset(24, 26).addBox(-1.0F, 0.0F, -1.0F, 2, 6, 2, 0.0F, false);
+        lf = new ModelRenderer(this);
+        lf.setRotationPoint(3.0F, -4.0F, -1.0F);
+        scotina_enot_dranyi.addChild(lf);
+        lf.setTextureOffset(56, 0).addBox(-1.0F, 0.0F, -1.0F, 2.0F, 4.0F, 2.0F, 0.0F, false);
 
-        LeftFront = new ModelRenderer(this);
-        LeftFront.setRotationPoint(5.0F, 2.0F, -9.0F);
-        Front.addChild(LeftFront);
-        LeftFront.setTextureOffset(30, 32).addBox(-1.0F, 0.0F, -1.0F, 2, 6, 2, 0.0F, false);
+        rb = new ModelRenderer(this);
+        rb.setRotationPoint(-1.0F, -4.0F, 7.0F);
+        scotina_enot_dranyi.addChild(rb);
+        rb.setTextureOffset(56, 0).addBox(-1.0F, 0.0F, -1.0F, 2.0F, 4.0F, 2.0F, 0.0F, false);
 
-        Head = new ModelRenderer(this);
-        Head.setRotationPoint(0.0F, -5.0F, -10.0F);
-        Body.addChild(Head);
-        Head.setTextureOffset(0, 26).addBox(-3.0F, -4.0F, -6.0F, 6, 6, 6, 0.0F, false);
+        rf = new ModelRenderer(this);
+        rf.setRotationPoint(-1.0F, -4.0F, -1.0F);
+        scotina_enot_dranyi.addChild(rf);
+        rf.setTextureOffset(56, 0).addBox(-1.0F, 0.0F, -1.0F, 2.0F, 4.0F, 2.0F, 0.0F, false);
     }
 
+//    @Override
+//    public void render(MatrixStack matrixStackIn, IVertexBuilder bufferIn, int packedLightIn, int packedOverlayIn,
+//                       float red, float green, float blue, float alpha) {
+//        Body.render(matrixStackIn, bufferIn, packedLightIn, packedOverlayIn, red, green, blue, alpha);
+//    }
+@Override
+public void render(MatrixStack matrixStack, IVertexBuilder buffer, int packedLight, int packedOverlay, float red, float green, float blue, float alpha){
+    scotina_enot_dranyi.render(matrixStack, buffer, packedLight, packedOverlay);
+}
     @Override
-    public void render(MatrixStack matrixStackIn, IVertexBuilder bufferIn, int packedLightIn, int packedOverlayIn,
-                       float red, float green, float blue, float alpha) {
-        Body.render(matrixStackIn, bufferIn, packedLightIn, packedOverlayIn, red, green, blue, alpha);
+    public void setRotationAngles(RaccoonEntity entity, float limbSwing, float limbSwingAmount, float ageInTicks, float netHeadYaw, float headPitch){
+                this.head_full.rotateAngleX = headPitch * ((float) Math.PI / 180F);
+                this.head_full.rotateAngleY = netHeadYaw * ((float) Math.PI / 180F);
+                this.rb.rotateAngleX = MathHelper.cos(limbSwing * 0.6662F) * 1.4F * limbSwingAmount;
+                this.lb.rotateAngleX = MathHelper.cos(limbSwing * 0.6662F + (float) Math.PI) * 1.4F * limbSwingAmount;
+                this.rf.rotateAngleX = MathHelper.cos(limbSwing * 0.6662F + (float) Math.PI) * 1.4F * limbSwingAmount;
+                this.lf.rotateAngleX = MathHelper.cos(limbSwing * 0.6662F) * 1.4F * limbSwingAmount;
+                this.tail_for_u.rotateAngleY = headPitch * ((float) Math.PI / 180F);
     }
 
-    @Override
-    public void setRotationAngles(T entityIn, float limbSwing, float limbSwingAmount, float ageInTicks,
-                                  float netHeadYaw, float headPitch) {
-        this.Head.rotateAngleX = headPitch * ((float) Math.PI / 180F);
-        this.Head.rotateAngleY = netHeadYaw * ((float) Math.PI / 180F);
-        //this.Body.rotateAngleZ = ((float)Math.PI / 2F);
-        this.RightBack.rotateAngleX = MathHelper.cos(limbSwing * 0.6662F) * 1.4F * limbSwingAmount;
-        this.LeftBack.rotateAngleX = MathHelper.cos(limbSwing * 0.6662F + (float) Math.PI) * 1.4F * limbSwingAmount;
-        this.RightFront.rotateAngleX = MathHelper.cos(limbSwing * 0.6662F + (float) Math.PI) * 1.4F * limbSwingAmount;
-        this.LeftFront.rotateAngleX = MathHelper.cos(limbSwing * 0.6662F) * 1.4F * limbSwingAmount;
-    }
 
     public void setRotationAngle(ModelRenderer modelRenderer, float x, float y, float z) {
         modelRenderer.rotateAngleX = x;
@@ -94,39 +108,39 @@ public class RaccoonEntityModel<T extends RaccoonEntity> extends EntityModel<T> 
         super.setLivingAnimations(entityIn, limbSwing, limbSwingAmount, partialTick);
     }
 
-    public ModelRenderer getBack() {
-        return Back;
-    }
-
-    public ModelRenderer getBody() {
-        return Body;
-    }
-
-    public ModelRenderer getFront() {
-        return Front;
-    }
-
-    public ModelRenderer getHead() {
-        return Head;
-    }
-
-    public ModelRenderer getLeftBack() {
-        return LeftBack;
-    }
-
-    public ModelRenderer getLeftFront() {
-        return LeftFront;
-    }
-
-    public ModelRenderer getLegs() {
-        return Legs;
-    }
-
-    public ModelRenderer getRightBack() {
-        return RightBack;
-    }
-
-    public ModelRenderer getRightFront() {
-        return RightFront;
-    }
+//    public ModelRenderer getBack() {
+//        return Back;
+//    }
+//
+//    public ModelRenderer getBody() {
+//        return Body;
+//    }
+//
+//    public ModelRenderer getFront() {
+//        return Front;
+//    }
+//
+//    public ModelRenderer getHead() {
+//        return Head;
+//    }
+//
+//    public ModelRenderer getLeftBack() {
+//        return LeftBack;
+//    }
+//
+//    public ModelRenderer getLeftFront() {
+//        return LeftFront;
+//    }
+//
+//    public ModelRenderer getLegs() {
+//        return Legs;
+//    }
+//
+//    public ModelRenderer getRightBack() {
+//        return RightBack;
+//    }
+//
+//    public ModelRenderer getRightFront() {
+//        return RightFront;
+//    }
 }
