@@ -1,7 +1,9 @@
 package com.rpgames.petmod.item;
 
 import com.rpgames.petmod.PetMod;
-import net.minecraft.item.*;
+import net.minecraft.item.Item;
+import net.minecraft.item.Rarity;
+import net.minecraft.item.WrittenBookItem;
 
 public class GuideBookItem extends WrittenBookItem {
 
@@ -10,6 +12,4 @@ public class GuideBookItem extends WrittenBookItem {
                 .group(PetMod.petModItemGroup)
                 .rarity(Rarity.RARE));
     }
-
-
 }

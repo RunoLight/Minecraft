@@ -45,8 +45,6 @@ public class RegistryHandler {
         ENTITY_DEFERRED_REGISTER.register(FMLJavaModLoadingContext.get().getModEventBus());
         POI_TYPE_DEFERRED_REGISTER.register(FMLJavaModLoadingContext.get().getModEventBus());
         VILLAGER_PROFESSION_DEFERRED_REGISTER.register(FMLJavaModLoadingContext.get().getModEventBus());
-
-        //blockStatesInjector = ObfuscationReflectionHelper.findMethod(PointOfInterestType.class, "func_221052_a", PointOfInterestType.class);
     }
 
     /*

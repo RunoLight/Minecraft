@@ -23,7 +23,6 @@ public class ForgeEventHandlers {
     // Methods should be public static void + SubscribeEvent Annotation
     //
 
-
     /**
      * Pre-init
      */
@@ -35,7 +34,7 @@ public class ForgeEventHandlers {
 
     @SubscribeEvent
     public static void clientSetup(final FMLClientSetupEvent event) {
-        PetMod.LOGGER.info("Got game settings {}", event.getMinecraftSupplier().get().gameSettings);
+        PetMod.DebugLog("Got game settings " + event.getMinecraftSupplier().get().gameSettings);
 
         RenderingRegistry.registerEntityRenderingHandler(RegistryHandler.RACCOON_ENTITY.get(), RaccoonEntityRender::new);
     }
