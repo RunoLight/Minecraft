@@ -30,6 +30,7 @@ public class ForgeEventHandlers {
     @SubscribeEvent
     public void setup(final FMLCommonSetupEvent event) {
         //some common setup
+        RegistryHandler.fixPOITypeBlockStates(RegistryHandler.POI.get());
     }
 
     @SubscribeEvent

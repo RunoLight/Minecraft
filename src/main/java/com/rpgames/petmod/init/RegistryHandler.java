@@ -11,6 +11,7 @@ import com.rpgames.petmod.item.PeanutFood;
 import com.rpgames.petmod.item.RaccoonEntityEgg;
 import com.rpgames.petmod.item.SimpleItem;
 import net.minecraft.block.Block;
+import net.minecraft.block.BlockState;
 import net.minecraft.entity.EntityClassification;
 import net.minecraft.entity.EntityType;
 import net.minecraft.entity.merchant.villager.VillagerProfession;
@@ -20,14 +21,14 @@ import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.SoundEvents;
 import net.minecraft.village.PointOfInterestType;
 import net.minecraftforge.fml.RegistryObject;
+import net.minecraftforge.fml.common.ObfuscationReflectionHelper;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
 import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
 
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
-
-import static net.minecraft.village.PointOfInterestType.getAllStates;
+import java.util.Set;
 
 public class RegistryHandler {
 
@@ -44,7 +45,8 @@ public class RegistryHandler {
         ENTITY_DEFERRED_REGISTER.register(FMLJavaModLoadingContext.get().getModEventBus());
         POI_TYPE_DEFERRED_REGISTER.register(FMLJavaModLoadingContext.get().getModEventBus());
         VILLAGER_PROFESSION_DEFERRED_REGISTER.register(FMLJavaModLoadingContext.get().getModEventBus());
-        fixPOITypeBlockStates(POI.get());
+
+        //blockStatesInjector = ObfuscationReflectionHelper.findMethod(PointOfInterestType.class, "func_221052_a", PointOfInterestType.class);
     }
 
     /*
@@ -102,19 +104,11 @@ public class RegistryHandler {
      * Reflection fix
      * Methods to fix POI reflection, makes villagers available to switch profession to some of modded one
      */
-    private static Method blockStatesInjector;
+    private static final Method blockStatesInjector;
 
     static
     {
-        try
-        {
-            blockStatesInjector = PointOfInterestType.class.getDeclaredMethod("func_221052_a", PointOfInterestType.class);
-            blockStatesInjector.setAccessible(true);
-        }
-        catch (NoSuchMethodException | SecurityException e)
-        {
-            e.printStackTrace();
-        }
+        blockStatesInjector = ObfuscationReflectionHelper.findMethod(PointOfInterestType.class, "func_221052_a", PointOfInterestType.class);
     }
 
     public static void fixPOITypeBlockStates(PointOfInterestType poiType)
@@ -131,4 +125,9 @@ public class RegistryHandler {
     /**
      * -- Reflection fix
      */
+
+    public static Set<BlockState> getAllStates(Block block)
+    {
+        return ImmutableSet.copyOf(block.getStateContainer().getValidStates());
+    }
 }
