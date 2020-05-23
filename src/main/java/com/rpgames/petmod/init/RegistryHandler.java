@@ -18,6 +18,7 @@ import net.minecraft.entity.merchant.villager.VillagerProfession;
 import net.minecraft.item.Item;
 import net.minecraft.item.Rarity;
 import net.minecraft.util.ResourceLocation;
+import net.minecraft.util.SoundEvent;
 import net.minecraft.util.SoundEvents;
 import net.minecraft.village.PointOfInterestType;
 import net.minecraftforge.fml.RegistryObject;
@@ -38,6 +39,7 @@ public class RegistryHandler {
     public static final DeferredRegister<EntityType<?>> ENTITY_DEFERRED_REGISTER = new DeferredRegister<>(ForgeRegistries.ENTITIES, PetMod.MOD_ID);
     public static final DeferredRegister<PointOfInterestType> POI_TYPE_DEFERRED_REGISTER = new DeferredRegister<>(ForgeRegistries.POI_TYPES, PetMod.MOD_ID);
     public static final DeferredRegister<VillagerProfession> VILLAGER_PROFESSION_DEFERRED_REGISTER = new DeferredRegister<>(ForgeRegistries.PROFESSIONS, PetMod.MOD_ID);
+    public static final DeferredRegister<SoundEvent> SOUND_DEFERRED_REGISTER = new DeferredRegister<>(ForgeRegistries.SOUND_EVENTS, PetMod.MOD_ID);
 
     public static void registerAll() {
         ITEM_DEFERRED_REGISTER.register(FMLJavaModLoadingContext.get().getModEventBus());
@@ -45,6 +47,7 @@ public class RegistryHandler {
         ENTITY_DEFERRED_REGISTER.register(FMLJavaModLoadingContext.get().getModEventBus());
         POI_TYPE_DEFERRED_REGISTER.register(FMLJavaModLoadingContext.get().getModEventBus());
         VILLAGER_PROFESSION_DEFERRED_REGISTER.register(FMLJavaModLoadingContext.get().getModEventBus());
+        SOUND_DEFERRED_REGISTER.register(FMLJavaModLoadingContext.get().getModEventBus());
     }
 
     /*
@@ -98,6 +101,10 @@ public class RegistryHandler {
                     "pet_villager", POI.get(), ImmutableSet.of(), ImmutableSet.of(), SoundEvents.ENTITY_VILLAGER_WORK_FARMER)
     );
 
+    // Sound events
+    public static final RegistryObject<SoundEvent> TEST_SOUND = SOUND_DEFERRED_REGISTER.register(
+            "test_sound", () -> new net.minecraft.util.SoundEvent(new ResourceLocation(PetMod.MOD_ID, "test_sound"))
+    );
 
     /**
      * Reflection fix

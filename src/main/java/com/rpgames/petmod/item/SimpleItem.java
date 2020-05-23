@@ -1,10 +1,10 @@
 package com.rpgames.petmod.item;
 
 import com.rpgames.petmod.PetMod;
+import com.rpgames.petmod.init.RegistryHandler;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemUseContext;
 import net.minecraft.util.ActionResultType;
-import net.minecraft.util.SoundEvents;
 
 public class SimpleItem extends Item {
 
@@ -15,7 +15,7 @@ public class SimpleItem extends Item {
 
     @Override
     public ActionResultType onItemUse(ItemUseContext context) {
-        context.getPlayer().playSound(SoundEvents.ENTITY_WANDERING_TRADER_YES, 1.0F, 1.0F);
+        context.getPlayer().playSound(RegistryHandler.TEST_SOUND.get(), 1.0F, 1.0F);
         return super.onItemUse(context);
     }
 }

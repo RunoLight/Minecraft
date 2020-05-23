@@ -1,0 +1,8 @@
+{
+  "test_sound": {
+    "category": "player",
+    "sounds": [
+      "rpgpetmod:test_sound"
+    ]
+  }
+}
