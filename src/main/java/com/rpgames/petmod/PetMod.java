@@ -35,8 +35,15 @@ public class PetMod
 
         // Forge event bus contains run-time events!
         MinecraftForge.EVENT_BUS.register(new ForgeEventHandlers());
+
         MinecraftForge.EVENT_BUS.register(this);
 
         Networking.registerMessages();
+
+        // TODO:
+        //  GLOBAL TO DO
+        //  SET POI OF VILLAGER TO VILLAGER BLOCK
+        //  ADD TRADES VILLAGER
+        //  ADD VILLAGER BUILDING
     }
 }
