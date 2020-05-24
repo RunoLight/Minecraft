@@ -64,6 +64,7 @@ public class PetVillagerSetup {
         }
     }
 
+    // TODO: doesnt work
     public static void addTrades(WandererTradesEvent event) {
         // Makes wanderers trade as last two levels of this villager
         List<VillagerTrades.ITrade> genericTrades = event.getGenericTrades();

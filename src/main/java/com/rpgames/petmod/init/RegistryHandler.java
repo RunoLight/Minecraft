@@ -90,9 +90,14 @@ public class RegistryHandler {
 
     // POI
     public static final RegistryObject<PointOfInterestType> POI = POI_TYPE_DEFERRED_REGISTER.register(
-            "pet_poi", () -> new PointOfInterestType(
-                    "pet_poi", getAllStates(RegistryHandler.DEV_BLOCK.get()), 1, null, 1
-            )
+            "pet_poi",
+            () -> new PointOfInterestType(
+                    "pet_poi",
+                    getAllStates(RegistryHandler.DEV_BLOCK.get()),
+                    1,
+                     (iHaveNoIdeaHowItWorks) -> { return true; },
+                     1
+             )
     );
 
     // Profession

@@ -1,5 +1,7 @@
 package com.rpgames.petmod;
 
+//import com.rpgames.petmod.event.PetVillagerPiece;
+
 import com.rpgames.petmod.init.ForgeEventHandlers;
 import com.rpgames.petmod.init.RegistryHandler;
 import com.rpgames.petmod.network.Networking;
@@ -29,6 +31,7 @@ public class PetMod
 
     public PetMod() {
         instance = this;
+        MinecraftForge.EVENT_BUS.register(this);
 
         RegistryHandler.registerAll();
 
