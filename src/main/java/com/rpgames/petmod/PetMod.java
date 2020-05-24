@@ -2,6 +2,7 @@ package com.rpgames.petmod;
 
 //import com.rpgames.petmod.event.PetVillagerPiece;
 
+import com.rpgames.petmod.event.PetVillagerSetup;
 import com.rpgames.petmod.init.ForgeEventHandlers;
 import com.rpgames.petmod.init.RegistryHandler;
 import com.rpgames.petmod.network.Networking;
@@ -44,6 +45,8 @@ public class PetMod
         MinecraftForge.EVENT_BUS.register(this);
 
         Networking.registerMessages();
+
+        PetVillagerSetup.init();
 
         // TODO:
         //  GLOBAL TO DO

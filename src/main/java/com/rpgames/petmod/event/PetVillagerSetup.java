@@ -1,6 +1,8 @@
 package com.rpgames.petmod.event;
 
+import com.google.common.collect.ImmutableList;
 import com.google.common.collect.ImmutableMap;
+import com.mojang.datafixers.util.Pair;
 import com.rpgames.petmod.init.RegistryHandler;
 import it.unimi.dsi.fastutil.ints.Int2ObjectMap;
 import it.unimi.dsi.fastutil.ints.Int2ObjectOpenHashMap;
@@ -10,12 +12,21 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.item.Items;
 import net.minecraft.item.MerchantOffer;
 import net.minecraft.util.IItemProvider;
+import net.minecraft.util.ResourceLocation;
+import net.minecraft.world.gen.feature.jigsaw.JigsawManager;
+import net.minecraft.world.gen.feature.jigsaw.JigsawPattern;
+import net.minecraft.world.gen.feature.jigsaw.JigsawPiece;
+import net.minecraft.world.gen.feature.jigsaw.SingleJigsawPiece;
+import net.minecraft.world.gen.feature.structure.PlainsVillagePools;
 import net.minecraftforge.event.village.VillagerTradesEvent;
 import net.minecraftforge.event.village.WandererTradesEvent;
 
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.util.Random;
+
+import static com.rpgames.petmod.PetMod.MOD_ID;
 
 public class PetVillagerSetup {
 
@@ -101,5 +112,30 @@ public class PetVillagerSetup {
 
     private static Int2ObjectMap<VillagerTrades.ITrade[]> gatAsIntMap(ImmutableMap<Integer, VillagerTrades.ITrade[]> tradeArray) {
         return new Int2ObjectOpenHashMap<>(tradeArray);
+    }
+
+    /**
+     * Villager building setup
+     */
+    @SuppressWarnings("deprecation")
+    public static void init() {
+        PlainsVillagePools.init();
+
+
+
+        JigsawPattern old = JigsawManager.REGISTRY.get(new ResourceLocation("minecraft", "village/plains/houses"));
+        List<JigsawPiece> shuffled = old.getShuffledPieces(new Random());
+        List<Pair<JigsawPiece, Integer>> newPieces = new ArrayList<>();
+        for(JigsawPiece p : shuffled){
+            newPieces.add(new Pair<>(p, 1));
+        }
+        newPieces.add(new Pair<>(new SingleJigsawPiece("rpgpetmod:village/houses/pet_keeper_house"), 0));
+        ResourceLocation something = old.func_214948_a();
+        JigsawManager.REGISTRY.register(new JigsawPattern(new ResourceLocation("minecraft", "village/plains/houses"), something, newPieces, JigsawPattern.PlacementBehaviour.RIGID));
+
+        JigsawManager.REGISTRY.register(new JigsawPattern(new ResourceLocation(MOD_ID, "village/houses/pet_keeper_house"), new ResourceLocation("empty"), ImmutableList.of(Pair.of(new SingleJigsawPiece(MOD_ID + ":village/houses/pet_keeper_house"), 100)), JigsawPattern.PlacementBehaviour.RIGID));
+        //JigsawManager.field_214891_a.register(new JigsawPattern(new ResourceLocation("pillager_outpost/towers"), new ResourceLocation("empty"), ImmutableList.of(Pair.of(new ListJigsawPiece(ImmutableList.of(new SingleJigsawPiece("pillager_outpost/watchtower"), new SingleJigsawPiece("pillager_outpost/watchtower_overgrown", ImmutableList.of(new IntegrityProcessor(0.05F))))), 1)), JigsawPattern.PlacementBehaviour.RIGID));
+
+        //JigsawManager.func_214889_a(new JigsawPattern(new ResourceLocation(MOD_ID, "), new ResourceLocation("empty"), ImmutableList.of(Pair.of(new SingleJigsawPiece("rpgpetmod:village/houses/pet_keeper_house"), 0)), JigsawPattern.PlacementBehaviour.RIGID));
     }
 }
