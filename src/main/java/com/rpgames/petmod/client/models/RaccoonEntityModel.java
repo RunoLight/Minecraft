@@ -108,39 +108,5 @@ public void render(MatrixStack matrixStack, IVertexBuilder buffer, int packedLig
         super.setLivingAnimations(entityIn, limbSwing, limbSwingAmount, partialTick);
     }
 
-//    public ModelRenderer getBack() {
-//        return Back;
-//    }
-//
-//    public ModelRenderer getBody() {
-//        return Body;
-//    }
-//
-//    public ModelRenderer getFront() {
-//        return Front;
-//    }
-//
-//    public ModelRenderer getHead() {
-//        return Head;
-//    }
-//
-//    public ModelRenderer getLeftBack() {
-//        return LeftBack;
-//    }
-//
-//    public ModelRenderer getLeftFront() {
-//        return LeftFront;
-//    }
-//
-//    public ModelRenderer getLegs() {
-//        return Legs;
-//    }
-//
-//    public ModelRenderer getRightBack() {
-//        return RightBack;
-//    }
-//
-//    public ModelRenderer getRightFront() {
-//        return RightFront;
-//    }
+
 }
