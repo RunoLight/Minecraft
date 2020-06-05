@@ -1,8 +1,8 @@
 {
   "itemGroup.rpg_pets": "RGP Pets",
 
-  "block.rpgpetmod.dev_block": "Developers Block",
-  "block.rpgpetmod.dev_block": "Block of Peanut",
+  "block.rpgpetmod.dev_block": "Pet Keeper's Furnace",
+  "block.rpgpetmod.peanut_food_block": "Block of Peanut",
 
   "item.rpgpetmod.guide_book": "Pets Guide Book",
   "item.rpgpetmod.simple_item": "Simple item",
