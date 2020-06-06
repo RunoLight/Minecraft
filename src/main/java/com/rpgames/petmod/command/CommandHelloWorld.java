@@ -15,7 +15,7 @@ public class CommandHelloWorld implements Command<CommandSource> {
 
     public static ArgumentBuilder<CommandSource, ?> register(CommandDispatcher<CommandSource> dispatcher) {
         return Commands.literal("HelloWorld")
-                .requires(cs -> cs.hasPermissionLevel(0))
+                .requires(cs -> cs.hasPermissionLevel(4)) // Permission 4 is creative/op
                 .executes(CMD);
     }
 
