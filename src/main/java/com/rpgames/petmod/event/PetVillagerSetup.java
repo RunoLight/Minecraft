@@ -6,7 +6,6 @@ import com.mojang.datafixers.util.Pair;
 import com.rpgames.petmod.init.RegistryHandler;
 import it.unimi.dsi.fastutil.ints.Int2ObjectMap;
 import it.unimi.dsi.fastutil.ints.Int2ObjectOpenHashMap;
-import net.minecraft.block.Blocks;
 import net.minecraft.entity.merchant.villager.VillagerTrades;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.Items;
@@ -20,6 +19,7 @@ import net.minecraft.world.gen.feature.jigsaw.SingleJigsawPiece;
 import net.minecraft.world.gen.feature.structure.PlainsVillagePools;
 import net.minecraftforge.event.village.VillagerTradesEvent;
 import net.minecraftforge.event.village.WandererTradesEvent;
+import net.minecraftforge.eventbus.api.SubscribeEvent;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -37,22 +37,29 @@ public class PetVillagerSetup {
     private static final Int2ObjectMap<VillagerTrades.ITrade[]> tradesTemplates = gatAsIntMap(
             ImmutableMap.of(
                     2, new VillagerTrades.ITrade[]{
-                            buildTrade(Blocks.STONE, 20, Items.EMERALD, 10, 9, 16, 10),
-                            buildTrade(Blocks.STONE, 20, Items.EMERALD, 10, 9, 16, 10)
+                            buildTrade(Items.EMERALD, 15, RegistryHandler.KEEPER_FURNACE.get(), 1, 9, 16, 10),
+                            buildTrade(Items.EMERALD, 7, RegistryHandler.PEANUT_FOOD.get(), 1, 9, 16, 10),
+                            buildTrade(Items.EMERALD, (int)((Math.random()+20)*64), RegistryHandler.PEANUT_FOOD.get(), 1, 9, 16, 10)
                     },
                     3, new VillagerTrades.ITrade[]{
-                            buildTrade(Blocks.STONE, 30, Items.EMERALD, 10, 9, 16, 10),
-                            buildTrade(Blocks.STONE, 30, Items.EMERALD, 10, 9, 16, 10),
-                            buildTrade(Blocks.STONE, 30, Items.EMERALD, 10, 9, 16, 10),
-                            buildTrade(Blocks.STONE, 30, Items.EMERALD, 10, 9, 16, 10),
+                            buildTrade(Items.EMERALD, 10, RegistryHandler.KEEPER_FURNACE.get(), 1, 9, 16, 10),
+                            buildTrade(Items.EMERALD, 3, RegistryHandler.PEANUT_FOOD.get(), 1, 9, 16, 10),
+                            buildTrade(Items.LEATHER, 24, RegistryHandler.PEANUT_FOOD.get(), 4, 9, 16, 10),
+                            buildTrade(Items.CARROT, (int)((Math.random()+20)*64), Items.EMERALD, 1, 9, 16, 10)
                     },
                     4, new VillagerTrades.ITrade[]{
-                            buildTrade(Blocks.STONE, 40, Items.EMERALD, 10, 9, 16, 10),
-                            buildTrade(Blocks.STONE, 40, Items.EMERALD, 10, 9, 16, 10)
+                            buildTrade(Items.EMERALD, 5, RegistryHandler.KEEPER_FURNACE.get(), 1, 9, 16, 10),
+                            buildTrade(Items.EMERALD, 2, RegistryHandler.PEANUT_FOOD.get(), 1, 9, 16, 10),
+                            buildTrade(Items.LEATHER, 16, RegistryHandler.PEANUT_FOOD.get(), 4, 9, 16, 10),
+                            buildTrade(Items.CARROT, (int)((Math.random()+12)*64), Items.EMERALD, 1, 9, 16, 10),
+                            buildTrade(Items.EMERALD, (int)((Math.random()+48)*64), RegistryHandler.RACCOON_ENTITY_EGG.get(), 1, 9, 16, 10)
                     },
                     5, new VillagerTrades.ITrade[]{
-                            buildTrade(Blocks.STONE, 50, Items.EMERALD, 10, 9, 16, 10),
-                            buildTrade(Blocks.STONE, 50, Items.EMERALD, 10, 9, 16, 10)
+                            buildTrade(Items.EMERALD, 3, RegistryHandler.KEEPER_FURNACE.get(), 1, 9, 16, 10),
+                            buildTrade(Items.EMERALD, 1, RegistryHandler.PEANUT_FOOD.get(), 2, 9, 16, 10),
+                            buildTrade(Items.LEATHER, 8, RegistryHandler.PEANUT_FOOD.get(), 4, 9, 16, 10),
+                            buildTrade(Items.CARROT, (int)((Math.random()+4)*64), Items.EMERALD, 1, 9, 16, 10),
+                            buildTrade(Items.EMERALD, (int)((Math.random()+16)*64), RegistryHandler.RACCOON_ENTITY_EGG.get(), 1, 9, 16, 10)
                     }
             )
     );
@@ -138,4 +145,6 @@ public class PetVillagerSetup {
 
         //JigsawManager.func_214889_a(new JigsawPattern(new ResourceLocation(MOD_ID, "), new ResourceLocation("empty"), ImmutableList.of(Pair.of(new SingleJigsawPiece("rpgpetmod:village/houses/pet_keeper_house"), 0)), JigsawPattern.PlacementBehaviour.RIGID));
     }
+    @SubscribeEvent
+    public static void villagerTrades(VillagerTradesEvent event) { addTrades(event); }
 }

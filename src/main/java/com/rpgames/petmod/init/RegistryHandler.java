@@ -3,7 +3,7 @@ package com.rpgames.petmod.init;
 import com.google.common.collect.ImmutableSet;
 import com.rpgames.petmod.PetMod;
 import com.rpgames.petmod.block.BlockItemBase;
-import com.rpgames.petmod.block.DevBlock;
+import com.rpgames.petmod.block.KeeperFurnace;
 import com.rpgames.petmod.block.PeanutFoodBlock;
 import com.rpgames.petmod.entity.RaccoonEntity;
 import com.rpgames.petmod.item.GuideBookItem;
@@ -65,11 +65,11 @@ public class RegistryHandler {
     public static final RegistryObject<Item> PEANUT_FOOD = ITEM_DEFERRED_REGISTER.register("peanut_food", PeanutFood::new);
 
     // Block
-    public static final RegistryObject<Block> DEV_BLOCK = BLOCK_DEFERRED_REGISTER.register("dev_block", DevBlock::new);
+    public static final RegistryObject<Block> KEEPER_FURNACE = BLOCK_DEFERRED_REGISTER.register("dev_block", KeeperFurnace::new);
     public static final RegistryObject<Block> PEANUT_FOOD_BLOCK = BLOCK_DEFERRED_REGISTER.register("peanut_food_block", PeanutFoodBlock::new);
 
     // Block-Items
-    public static final RegistryObject<Item> DEV_BLOCK_ITEM = ITEM_DEFERRED_REGISTER.register("dev_block", () -> new BlockItemBase(DEV_BLOCK.get()));
+    public static final RegistryObject<Item> DEV_BLOCK_ITEM = ITEM_DEFERRED_REGISTER.register("dev_block", () -> new BlockItemBase(KEEPER_FURNACE.get()));
     public static final RegistryObject<Item> PEANUT_FOOD_BLOCK_ITEM = ITEM_DEFERRED_REGISTER.register("peanut_food_block", () -> new BlockItemBase(PEANUT_FOOD_BLOCK.get()));
 
     // Entity
@@ -93,7 +93,7 @@ public class RegistryHandler {
             "pet_poi",
             () -> new PointOfInterestType(
                     "pet_poi",
-                    getAllStates(RegistryHandler.DEV_BLOCK.get()),
+                    getAllStates(RegistryHandler.KEEPER_FURNACE.get()),
                     1,
                      (iHaveNoIdeaHowItWorks) -> { return true; },
                      1
