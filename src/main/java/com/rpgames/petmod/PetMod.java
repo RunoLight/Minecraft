@@ -9,7 +9,6 @@ import com.rpgames.petmod.network.Networking;
 import net.minecraft.item.ItemGroup;
 import net.minecraft.item.ItemStack;
 import net.minecraftforge.common.MinecraftForge;
-import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
 import org.apache.logging.log4j.LogManager;
@@ -47,9 +46,7 @@ public class PetMod
 
         Networking.registerMessages();
 
-        //PetVillagerSetup.init();
-
-        MinecraftForge.EVENT_BUS.register(PetVillagerSetup.class);
+        PetVillagerSetup.init();
 
         // TODO:
         //  GLOBAL TO DO

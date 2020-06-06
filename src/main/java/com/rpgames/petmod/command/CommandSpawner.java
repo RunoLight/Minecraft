@@ -18,7 +18,7 @@ public class CommandSpawner implements Command<CommandSource> {
 
     public static ArgumentBuilder<CommandSource, ?> register(CommandDispatcher<CommandSource> dispatcher) {
         return Commands.literal("Spawn")
-                .requires(cs -> cs.hasPermissionLevel(4)) // Permission 4 is creative/op
+                .requires(cs -> cs.hasPermissionLevel(4))
                 .executes(CMD);
     }
 

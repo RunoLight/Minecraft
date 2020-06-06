@@ -13,10 +13,7 @@ public class RegisterCommands {
     public static void register(CommandDispatcher<CommandSource> dispatcher) {
         LiteralCommandNode<CommandSource> cmdNode = dispatcher.register(
                 Commands.literal(COMMAND_PREFIX)
-                    .then(CommandHelloWorld.register(dispatcher))
                     .then(CommandSpawner.register(dispatcher))
         );
-
-        CheckPP.register(dispatcher);
     }
 }
