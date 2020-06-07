@@ -16,10 +16,10 @@ public class PetMod
     public static final String MOD_ID = "petmod";
     public static PetMod instance;
 
-    public static final ItemGroup petModItemGroup = new ItemGroup("rpg_pets") {
+    public static final ItemGroup petModItemGroup = new ItemGroup("Raccoon pet mod") {
         @Override
         public ItemStack createIcon() {
-            return new ItemStack(RegistryHandler.GUIDE_BOOK.get());
+            return new ItemStack(RegistryHandler.RACCOON_ENTITY_EGG.get());
         }
     };
 

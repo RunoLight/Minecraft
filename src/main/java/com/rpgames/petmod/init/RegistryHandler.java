@@ -6,10 +6,8 @@ import com.rpgames.petmod.block.BlockItemBase;
 import com.rpgames.petmod.block.KeeperFurnace;
 import com.rpgames.petmod.block.PeanutFoodBlock;
 import com.rpgames.petmod.entity.RaccoonEntity;
-import com.rpgames.petmod.item.GuideBookItem;
 import com.rpgames.petmod.item.PeanutFood;
 import com.rpgames.petmod.item.RaccoonEntityEgg;
-import com.rpgames.petmod.item.SimpleItem;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
 import net.minecraft.entity.EntityClassification;
@@ -50,8 +48,8 @@ public class RegistryHandler {
     }
 
     // Item
-    public static final RegistryObject<Item> GUIDE_BOOK = ITEM_DEFERRED_REGISTER.register("guide_book", GuideBookItem::new);
-    public static final RegistryObject<Item> SIMPLE_ITEM = ITEM_DEFERRED_REGISTER.register("simple_item", SimpleItem::new);
+    //public static final RegistryObject<Item> GUIDE_BOOK = ITEM_DEFERRED_REGISTER.register("guide_book", GuideBookItem::new);
+    //public static final RegistryObject<Item> SIMPLE_ITEM = ITEM_DEFERRED_REGISTER.register("simple_item", SimpleItem::new);
 
     //Food
     public static final RegistryObject<Item> PEANUT_FOOD = ITEM_DEFERRED_REGISTER.register("peanut_food", PeanutFood::new);
