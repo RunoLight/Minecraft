@@ -7,9 +7,9 @@ loaderVersion="[31,)" #mandatory This is typically bumped every Minecraft versio
 
 modId="petmod" #mandatory
 
-version="${file.jarVersion}" # 1.15.2 1.0.0
+version="1.15.2 1.0.0"
 
-displayName="RPG Pet Mod"
+displayName="Raccoon mod"
 
 # updateJSONURL="http://myurl.me/" #optional
 
@@ -17,13 +17,16 @@ displayName="RPG Pet Mod"
 
 logoFile="rpgpetmod.png" #optional # in the root of the mod JAR
 
-credits="This is credits"
+# credits=""
 
-authors="This is authors"
+authors="vblimov, Kurimasuta, Elveika, runolight"
 
 description='''
-    This
-        is description!
+    This mod adds a new entity: Raccoon!
+    You can feed it with new type of food (peanut), or with fish or chicken egg.
+    Also there is new type of villager, which can sell you an spawn egg for raccoon.
+
+    Mod is in development!
 '''
 
 [[dependencies.rpgpetmod]] #optional
@@ -36,7 +39,7 @@ description='''
     # BOTH, CLIENT or SERVER
     side="BOTH"
 
-[[dependencies.rpgpetmod]]
+[[dependencies.petmod]]
     modId="minecraft"
     mandatory=true
     versionRange="[1.15.2]"
