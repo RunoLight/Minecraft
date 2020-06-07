@@ -46,7 +46,8 @@ public class PetMod
 
         Networking.registerMessages();
 
-        PetVillagerSetup.init();
+        MinecraftForge.EVENT_BUS.register(PetVillagerSetup.class);
+        //PetVillagerSetup.init();
 
         // TODO:
         //  GLOBAL TO DO
