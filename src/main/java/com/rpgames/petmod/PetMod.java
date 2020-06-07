@@ -39,6 +39,15 @@ public class PetMod
 
         Networking.registerMessages();
 
+
+        //PetVillagerSetup.init();
+
+        // TODO:
+        //  GLOBAL TO DO
+        //  SET POI OF VILLAGER TO VILLAGER BLOCK
+        //  ADD TRADES VILLAGER
+        //  ADD VILLAGER BUILDING
+
         //PetVillagerSetup.init();
         MinecraftForge.EVENT_BUS.register(PetVillagerSetup.class);
     }
