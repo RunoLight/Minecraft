@@ -33,7 +33,6 @@ import java.util.Set;
 
 public class RegistryHandler {
 
-
     public static final DeferredRegister<Item> ITEM_DEFERRED_REGISTER = new DeferredRegister<>(ForgeRegistries.ITEMS, PetMod.MOD_ID);
     public static final DeferredRegister<Block> BLOCK_DEFERRED_REGISTER = new DeferredRegister<>(ForgeRegistries.BLOCKS, PetMod.MOD_ID);
     public static final DeferredRegister<EntityType<?>> ENTITY_DEFERRED_REGISTER = new DeferredRegister<>(ForgeRegistries.ENTITIES, PetMod.MOD_ID);
@@ -49,13 +48,6 @@ public class RegistryHandler {
         VILLAGER_PROFESSION_DEFERRED_REGISTER.register(FMLJavaModLoadingContext.get().getModEventBus());
         SOUND_DEFERRED_REGISTER.register(FMLJavaModLoadingContext.get().getModEventBus());
     }
-
-    /*
-     * TODO: Split up registers to different classes
-     *  which will contain ID of item as string instead of silent argument in .register() func
-     *  for having ID base
-     */
-
 
     // Item
     public static final RegistryObject<Item> GUIDE_BOOK = ITEM_DEFERRED_REGISTER.register("guide_book", GuideBookItem::new);

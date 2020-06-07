@@ -7,7 +7,6 @@ import net.minecraft.item.ItemUseContext;
 import net.minecraft.util.ActionResultType;
 
 public class SimpleItem extends Item {
-
     public SimpleItem() {
         super(new Item.Properties()
                 .group(PetMod.petModItemGroup));

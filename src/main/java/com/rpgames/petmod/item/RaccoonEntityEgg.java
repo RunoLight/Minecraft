@@ -1,15 +1,11 @@
 package com.rpgames.petmod.item;
 
-import com.rpgames.petmod.PetMod;
-import com.rpgames.petmod.entity.RaccoonEntity;
 import net.minecraft.block.DispenserBlock;
 import net.minecraft.dispenser.DefaultDispenseItemBehavior;
 import net.minecraft.dispenser.IBlockSource;
 import net.minecraft.entity.EntityType;
 import net.minecraft.entity.SpawnReason;
-import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
-import net.minecraft.item.Rarity;
 import net.minecraft.item.SpawnEggItem;
 import net.minecraft.nbt.CompoundNBT;
 import net.minecraft.util.Direction;
@@ -24,12 +20,6 @@ import java.util.List;
 import java.util.Map;
 
 public class RaccoonEntityEgg extends SpawnEggItem {
-//    public RaccoonEntityEgg(EntityType<RaccoonEntity> typeIn, int primaryColorIn, int secondaryColorIn, Properties builder) {
-//        super(typeIn, 0x288888, 0x1111111, new Item.Properties()
-//                .group(PetMod.petModItemGroup)
-//                .rarity(Rarity.EPIC));
-//    }
-
 
     protected static final List<RaccoonEntityEgg> UNADDED_EGGS = new ArrayList<>();
     private final Lazy<? extends EntityType<?>> entityTypeSupplier;

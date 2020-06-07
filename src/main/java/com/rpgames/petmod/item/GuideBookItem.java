@@ -6,12 +6,9 @@ import net.minecraft.item.Rarity;
 import net.minecraft.item.WrittenBookItem;
 
 public class GuideBookItem extends WrittenBookItem {
-
     public GuideBookItem() {
         super(new Item.Properties()
                 .group(PetMod.petModItemGroup)
                 .rarity(Rarity.RARE));
     }
-
-
 }

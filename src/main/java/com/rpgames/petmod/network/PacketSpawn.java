@@ -10,7 +10,6 @@ import net.minecraft.world.server.ServerWorld;
 import net.minecraftforge.fml.network.NetworkEvent;
 import net.minecraftforge.registries.ForgeRegistries;
 
-import java.awt.*;
 import java.util.function.Supplier;
 
 public class PacketSpawn {

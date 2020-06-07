@@ -3,8 +3,6 @@ package com.rpgames.petmod.item;
 import com.rpgames.petmod.PetMod;
 import net.minecraft.item.Food;
 import net.minecraft.item.Item;
-import net.minecraft.potion.EffectInstance;
-import net.minecraft.potion.Effects;
 
 public class PeanutFood extends Item {
     public PeanutFood() {
