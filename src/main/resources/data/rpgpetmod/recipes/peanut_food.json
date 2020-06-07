@@ -1,0 +1,21 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern":
+  [
+    "x  ",
+    "   ",
+    "   "
+  ],
+  "key":
+  {
+    "x":
+    {
+      "item": "rpgpetmod:peanut_food_block"
+    }
+  },
+  "result":
+  {
+    "item": "rpgpetmod:peanut_food",
+    "count": 9
+  }
+}
