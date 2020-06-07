@@ -3,21 +3,11 @@ package com.rpgames.petmod.client.models;
 import com.mojang.blaze3d.matrix.MatrixStack;
 import com.mojang.blaze3d.vertex.IVertexBuilder;
 import com.rpgames.petmod.entity.RaccoonEntity;
-
 import net.minecraft.client.renderer.entity.model.EntityModel;
 import net.minecraft.client.renderer.model.ModelRenderer;
 import net.minecraft.util.math.MathHelper;
 
 public class RaccoonEntityModel<T extends RaccoonEntity> extends EntityModel<T> {
-//    private final ModelRenderer Body;
-//    private final ModelRenderer Legs;
-//    private final ModelRenderer Back;
-//    private final ModelRenderer RightBack;
-//    private final ModelRenderer LeftBack;
-//    private final ModelRenderer Front;
-//    private final ModelRenderer RightFront;
-//    private final ModelRenderer LeftFront;
-//    private final ModelRenderer Head;
     private final ModelRenderer scotina_enot_dranyi;
     private final ModelRenderer head_full;
     private final ModelRenderer body_full;
@@ -28,14 +18,11 @@ public class RaccoonEntityModel<T extends RaccoonEntity> extends EntityModel<T> 
     private final ModelRenderer rf;
 
     public RaccoonEntityModel() {
-
-
         textureWidth = 64;
         textureHeight = 32;
 
         scotina_enot_dranyi = new ModelRenderer(this);
         scotina_enot_dranyi.setRotationPoint(0.0F, 24.0F, 0.0F);
-
 
         head_full = new ModelRenderer(this);
         head_full.setRotationPoint(2.0F, -4.0F, -4.0F);
@@ -75,12 +62,6 @@ public class RaccoonEntityModel<T extends RaccoonEntity> extends EntityModel<T> 
         scotina_enot_dranyi.addChild(rf);
         rf.setTextureOffset(56, 0).addBox(-1.0F, 0.0F, -1.0F, 2.0F, 4.0F, 2.0F, 0.0F, false);
     }
-
-//    @Override
-//    public void render(MatrixStack matrixStackIn, IVertexBuilder bufferIn, int packedLightIn, int packedOverlayIn,
-//                       float red, float green, float blue, float alpha) {
-//        Body.render(matrixStackIn, bufferIn, packedLightIn, packedOverlayIn, red, green, blue, alpha);
-//    }
 @Override
 public void render(MatrixStack matrixStack, IVertexBuilder buffer, int packedLight, int packedOverlay, float red, float green, float blue, float alpha){
     scotina_enot_dranyi.render(matrixStack, buffer, packedLight, packedOverlay);
@@ -96,7 +77,6 @@ public void render(MatrixStack matrixStack, IVertexBuilder buffer, int packedLig
                 this.tail_for_u.rotateAngleY = headPitch * ((float) Math.PI / 180F);
     }
 
-
     public void setRotationAngle(ModelRenderer modelRenderer, float x, float y, float z) {
         modelRenderer.rotateAngleX = x;
         modelRenderer.rotateAngleY = y;
@@ -107,6 +87,4 @@ public void render(MatrixStack matrixStack, IVertexBuilder buffer, int packedLig
     public void setLivingAnimations(T entityIn, float limbSwing, float limbSwingAmount, float partialTick) {
         super.setLivingAnimations(entityIn, limbSwing, limbSwingAmount, partialTick);
     }
-
-
 }

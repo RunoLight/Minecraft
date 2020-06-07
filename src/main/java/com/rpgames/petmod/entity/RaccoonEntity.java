@@ -1,16 +1,17 @@
 package com.rpgames.petmod.entity;
 
-import com.rpgames.petmod.PetMod;
 import com.rpgames.petmod.init.RegistryHandler;
 import net.minecraft.block.BlockState;
-import net.minecraft.entity.*;
+import net.minecraft.entity.AgeableEntity;
+import net.minecraft.entity.EntityType;
+import net.minecraft.entity.SharedMonsterAttributes;
+import net.minecraft.entity.SpawnReason;
 import net.minecraft.entity.ai.goal.*;
-import net.minecraft.entity.passive.*;
+import net.minecraft.entity.passive.CowEntity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.Items;
 import net.minecraft.item.crafting.Ingredient;
-import net.minecraft.nbt.CompoundNBT;
 import net.minecraft.network.IPacket;
 import net.minecraft.util.DamageSource;
 import net.minecraft.util.SoundEvent;
@@ -21,7 +22,6 @@ import net.minecraftforge.fml.network.NetworkHooks;
 
 public class RaccoonEntity extends CowEntity {
 
-
     public RaccoonEntity(EntityType<? extends RaccoonEntity> type, World worldIn) {
         super(type, worldIn);
     }
@@ -30,7 +30,7 @@ public class RaccoonEntity extends CowEntity {
     public RaccoonEntity createChild(AgeableEntity ageableEntity) {
         RaccoonEntity entity = new RaccoonEntity(RegistryHandler.RACCOON_ENTITY.get(), this.world);
         entity.onInitialSpawn(this.world, this.world.getDifficultyForLocation(new BlockPos(entity)),
-                SpawnReason.SPAWN_EGG, (ILivingEntityData) null, (CompoundNBT) null);
+                SpawnReason.SPAWN_EGG, null, null);
         return entity;
     }
 
@@ -38,11 +38,9 @@ public class RaccoonEntity extends CowEntity {
     protected void registerGoals() {
         this.goalSelector.addGoal(0, new SwimGoal(this));
         this.goalSelector.addGoal(1, new RandomWalkingGoal(this, 0.3d));
-//        this.goalSelector.addGoal(4, new FollowParentGoal(this, 1.1d));
         this.goalSelector.addGoal(2, new LookAtGoal(this, PlayerEntity.class, 6.0f));
         this.goalSelector.addGoal(3, new TemptGoal(this, 1.25D, Ingredient.fromItems(RegistryHandler.PEANUT_FOOD.get()), false));
         this.goalSelector.addGoal(3, new LookRandomlyGoal(this));
-//        this.goalSelector.addGoal(3, new FollowOwnerGoal(, 1.3D, 2f, 2f, true));
     }
 
     @Override
@@ -52,7 +50,6 @@ public class RaccoonEntity extends CowEntity {
         this.getAttribute(SharedMonsterAttributes.MOVEMENT_SPEED).setBaseValue(0.3d);
     }
 
-
     @Override
     public IPacket<?> createSpawnPacket() {
         return NetworkHooks.getEntitySpawningPacket(this);
@@ -60,7 +57,10 @@ public class RaccoonEntity extends CowEntity {
 
     @Override
     public boolean isBreedingItem(ItemStack stack) {
-        return stack.getItem() == RegistryHandler.PEANUT_FOOD.get();
+        return stack.getItem() == RegistryHandler.PEANUT_FOOD.get() ||
+               stack.getItem() == Items.TROPICAL_FISH ||
+               stack.getItem() == Items.EGG ||
+               stack.getItem() == Items.SALMON;
     }
 
     @Override

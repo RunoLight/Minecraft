@@ -11,11 +11,7 @@ import net.minecraft.util.text.StringTextComponent;
 
 public class SpawnerScreenGui extends Screen {
 
-    // Background texture
     private final ResourceLocation GUI = new ResourceLocation(PetMod.MOD_ID, "textures/gui/spawner_gui.png");
-    //private static final int WIDTH = 179;
-    //private static final int HEIGHT = 151;
-
     private static final int WIDTH = 180;
     private static final int HEIGHT = 148;
 
@@ -31,7 +27,6 @@ public class SpawnerScreenGui extends Screen {
 
     @Override
     protected void init() {
-        //super.init();
         int relX = (this.width - WIDTH) / 2;
         int relY = (this.height - HEIGHT) / 2;
 

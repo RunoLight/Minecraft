@@ -6,13 +6,10 @@ import com.rpgames.petmod.command.RegisterCommands;
 import com.rpgames.petmod.event.PetVillagerSetup;
 import com.rpgames.petmod.item.RaccoonEntityEgg;
 import net.minecraft.entity.EntityType;
-import net.minecraft.util.datafix.fixes.VillagerTrades;
 import net.minecraftforge.event.RegistryEvent;
 import net.minecraftforge.event.village.VillagerTradesEvent;
-import net.minecraftforge.event.village.WandererTradesEvent;
 import net.minecraftforge.eventbus.api.EventPriority;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
-import net.minecraftforge.fml.RegistryObject;
 import net.minecraftforge.fml.client.registry.RenderingRegistry;
 import net.minecraftforge.fml.event.lifecycle.FMLClientSetupEvent;
 import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
@@ -59,15 +56,6 @@ public class ForgeEventHandlers {
     /**
      * Run-time
      */
-//    @SubscribeEvent
-//    public void villagerTrades(VillagerTradesEvent event) { PetVillagerSetup.addTrades(event); }
-
-//    @SubscribeEvent
-//    public void wandererTrades(WandererTradesEvent event) { PetVillagerSetup.addTrades(event);}
-
-    // Сan be used to get run-time render info like width and height of this client
-    //@SubscribeEvent
-    //public static void renderOverlay(final RenderGameOverlayEvent event) {
-    //    event.getType();
-    //}
+    @SubscribeEvent
+    public void villagerTrades(VillagerTradesEvent event) { PetVillagerSetup.addTrades(event); }
 }
