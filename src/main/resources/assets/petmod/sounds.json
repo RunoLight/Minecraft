@@ -2,7 +2,7 @@
   "test_sound": {
     "category": "player",
     "sounds": [
-      "rpgpetmod:test_sound"
+      "petmod:test_sound"
     ]
   }
 }

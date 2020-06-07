@@ -1,8 +1,8 @@
 {
   "parent": "block/cube_all",
   "textures": {
-    "particle": "rpgpetmod:blocks/peanut_food_block",
-    "all": "rpgpetmod:blocks/peanut_food_block"
+    "particle": "petmod:blocks/peanut_food_block",
+    "all": "petmod:blocks/peanut_food_block"
   },
   "elements": [
     {

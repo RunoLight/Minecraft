@@ -6,7 +6,7 @@
       "entries": [
         {
           "type": "minecraft:item",
-          "name": "rpgpetmod:dev_block"
+          "name": "petmod:peanut_food_block"
         }
       ]
     }

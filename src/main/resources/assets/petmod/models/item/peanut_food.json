@@ -1,6 +1,6 @@
 {
   "parent": "item/generated",
   "textures": {
-    "layer0": "rpgpetmod:items/guide_book"
+    "layer0": "petmod:items/peanut_food"
   }
 }

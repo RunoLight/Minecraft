@@ -10,10 +10,10 @@ import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
 
-@Mod("rpgpetmod")
+@Mod("petmod")
 public class PetMod
 {
-    public static final String MOD_ID = "rpgpetmod";
+    public static final String MOD_ID = "petmod";
     public static PetMod instance;
 
     public static final ItemGroup petModItemGroup = new ItemGroup("rpg_pets") {

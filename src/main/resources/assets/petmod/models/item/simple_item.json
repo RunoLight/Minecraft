@@ -1,6 +1,6 @@
 {
   "parent": "item/generated",
   "textures": {
-    "layer0": "rpgpetmod:items/raccoon_entity_egg"
+    "layer0": "petmod:items/simple_item"
   }
 }

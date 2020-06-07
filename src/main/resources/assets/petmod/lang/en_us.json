@@ -1,0 +1,14 @@
+{
+  "itemGroup.rpg_pets": "RGP Pets",
+
+  "block.petmod.dev_block": "Pet Keeper's Furnace",
+  "block.petmod.peanut_food_block": "Block of Peanut",
+
+  "item.petmod.guide_book": "Pets Guide Book",
+  "item.petmod.simple_item": "Simple item",
+  "item.petmod.raccoon_entity_egg": "Raccoon Egg",
+  "item.petmod.peanut_food": "Peanut",
+
+  "entity.petmod.raccoon_entity":  "Raccoon",
+  "entity.minecraft.villager.petmod.pet_villager": "Pet keeper"
+}

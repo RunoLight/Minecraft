@@ -10,12 +10,12 @@
 {
 "x":
 {
-  "item": "rpgpetmod:peanut_food"
+  "item": "petmod:peanut_food"
 }
 },
 "result":
 {
-"item": "rpgpetmod:peanut_food_block",
+"item": "petmod:peanut_food_block",
 "count": 1
 }
 }
