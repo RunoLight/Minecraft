@@ -1,8 +1,6 @@
 Raccoon pet mod
 ================
-This repository exists in order to have a GitHub issue tracker for Mod.
-
-//See https://minecraft.curseforge.com/projects/TODO for downloads
+See https://www.curseforge.com/minecraft/mc-mods/raccoon-mod/
 
 Thanks! :)
 
